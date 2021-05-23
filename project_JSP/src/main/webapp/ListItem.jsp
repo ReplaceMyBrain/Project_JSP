@@ -1,6 +1,9 @@
+<%-- <%@page import="jdk.internal.misc.FileSystemOption"%> --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <%@include file ="HearderView.jsp" %>  
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -72,21 +75,22 @@
 
 </head>
 	<body>
-		<div class="search">
-    		<script src="https://kit.fontawesome.com/8eb5905426.js" crossorigin="anonymous"></script>
-    		<input type="text" placeholder="&#xf002; search" >
-    	</div>
+		<form action="search.do?table=${CATEGORY }&condition=${CONDITION }" method="post">
+			<div class="search">
+    			<script src="https://kit.fontawesome.com/8eb5905426.js" crossorigin="anonymous"></script>
+    			<input type="text" name="searched" placeholder="&#xf002; search" >
+    		</div>
     	
-		<div id="columns">
-			<c:forEach items="${list}" var="dto">
-  			<figure>
-  				<img src=${dto.tImg }>
-  				<figcaption>
-  				${dto.tTitle }
-  				</figcaption>
-			</figure>
-			</c:forEach>
-		</div>
-</body>
-
+			<div id="columns">
+				<c:forEach items="${list}" var="dto">
+  					<figure>
+  						<img src=${dto.image }>
+  						<figcaption>
+  							${dto.title }
+  						</figcaption>
+					</figure>
+				</c:forEach>
+			</div>
+		</form>
+	</body>
 </html>

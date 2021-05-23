@@ -1,92 +1,50 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@include file ="HearderView.jsp" %>  
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-
-	/* search 수정 */
-	.search {
-    	position: relative;
-    	text-align: center;
-    	width: 900px;
-    	margin: 0 auto;
-    	font-family: Georgia, Serif;
-		font-size: 30px;
+	.container {
+		margin: 200px;
+		margin-top: 100px;
+		margin-bottom: 0px;
 	}
 	
-	input {
-    	width: 100%;
-    	border-radius: 20px;
-    	border: 1px solid #bbb;
-    	margin: 10px 0;
-    	padding: 10px 12px;
-    	font-family: fontAwesome;
-	}
-	
-	.box {
-    display: inline;
-    width: auto;
-    border-radius: 0;
-    margin: auto;
-    text-align: center;
-    color: #bbb;
-	}
-
-	
-	#columns{
-		column-width:250px;
-		column-gap: 15px;
-		max-width: 1300px;
-		margin: 50px auto;
 		
-		font-family: Georgia, Serif;
-		font-size: 20px;
-	}
-	#columns figure{
-		display: inline-block;
-		/* border : 1px solid rgba(0,0,0,0.2); */
-		margin:0;
-		
-		margin-bottom: 30px;
-		/* box-shadow:10px 10px 5px rgba(2,2,2,0.2); */
+	.title {
+		margin: 50px;
+		margin-bottom: 8px;
 	}
 	
-	#columns figure img{
-		width: 100%;
-		border-radius: 20px;
+	.content {
+		margin: 50px;
+		margin-top: 8px;
+		text-overflow: ellipsis;
+		color: rgb(117,117,117);
 	}
-	
-	#columns figcaption {
-		margin-left:20px;
+	.views {
+		color: rgb(117,117,117);
 	}
-	
-	figure:hover {
-	opacity: 0.4;
-	}
-	
 </style>
-
 </head>
-	<body>
-		<div class="search">
-    		<script src="https://kit.fontawesome.com/8eb5905426.js" crossorigin="anonymous"></script>
-    		<input type="text" placeholder="&#xf002; search" >
-    	</div>
-    	
-		<div id="columns">
-			<c:forEach items="${list}" var="dto">
-  			<figure>
-  				<img src=${dto.tImg }>
-  				<figcaption>
-  				${dto.tTitle }
-  				</figcaption>
-			</figure>
-			</c:forEach>
+<body>
+	<c:forEach items="${list}" var="dto">
+		<div class="container">
+			<div class = "textArea">
+				<div class = "title">
+					<h2> ${dto.title } </h2>
+				</div>
+				<div class = "content">
+					${dto.content }
+				</div>
+				<hr class = "line">
+			</div>
 		</div>
+	</c:forEach>
+	<%@include file ="Footer.jsp" %> 
 </body>
-
 </html>
