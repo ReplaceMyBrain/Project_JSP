@@ -34,7 +34,7 @@
 <body>
 	<div>
 	<c:forEach items="${list}" var="dto">
-		<div class="container">
+		<div OnClick="location.href ='ContentViewNotice.do?n_num=${dto.num }'" class="container">
 			<div class = "textArea">
 				<div class = "title">
 					<h2> ${dto.title } </h2>

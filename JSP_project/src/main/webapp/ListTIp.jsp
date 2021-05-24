@@ -81,7 +81,7 @@
 		<div id="columns">
 			<c:forEach items="${list}" var="dto">
   			<figure>
-  				<img src=${dto.tImg }>
+  				<a href="ContentViewTip.do?t_num=${dto.num }"><img src=${dto.tImg }></a>
   				<figcaption>
   				${dto.tTitle }
   				</figcaption>

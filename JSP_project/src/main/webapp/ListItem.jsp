@@ -1,4 +1,3 @@
-<%-- <%@page import="jdk.internal.misc.FileSystemOption"%> --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -84,10 +83,10 @@
 			<div id="columns">
 				<c:forEach items="${list}" var="dto">
   					<figure>
-  						<img src=${dto.image }>
-  						<figcaption>
-  							${dto.title }
-  						</figcaption>
+  						<a href="ContentViewItem.do?i_num=${dto.num }"><img src=${dto.image }></a>
+  							<figcaption>
+  								${dto.title }
+  							</figcaption>	
 					</figure>
 				</c:forEach>
 			</div>

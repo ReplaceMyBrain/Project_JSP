@@ -20,6 +20,7 @@ public class ContentNoticeCommand implements Command {
 			// 사용자가 요청한 페이지 번호 초기값은 가장 최신글을 보여주는 1
 			int requestPage = 1;
 			String n_num = request.getParameter("n_num");
+			System.out.println(n_num);
 			ContentNoticedao dao = new ContentNoticedao();
 
 			// 클릭된 게시물 상세페이지 보여주기
