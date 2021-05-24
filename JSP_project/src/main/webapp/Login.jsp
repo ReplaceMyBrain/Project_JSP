@@ -149,7 +149,7 @@
 
     <header class="vid-header container">
       <div class="fullscreen-vid-wrap">
-        <a href="Main.do"><video src="video/video2.mp4" autoplay loop muted></video></a>
+        <a href="loginClic.do"><video src="video/video2.mp4" autoplay loop muted></video></a>
       </div>
     </header>
     <section class="login-form">
