@@ -21,6 +21,8 @@ import com.jspproject.bbs.command.ContentNoticeCommand;
 import com.jspproject.bbs.command.ContentNoticeDeleteCommand;
 import com.jspproject.bbs.command.ContentTipCommand;
 import com.jspproject.bbs.command.ContentTipDeleteCommand;
+import com.jspproject.bbs.command.DonateCommand;
+import com.jspproject.bbs.command.DonateSumCommand;
 import com.jspproject.bbs.command.LoadItemsCommand;
 import com.jspproject.bbs.command.LoadMyAllCommand;
 import com.jspproject.bbs.command.LoadMyItemCommand;
@@ -139,10 +141,11 @@ public class MainController extends HttpServlet {
 			viewPage = "Login.jsp"; // 실행할 jsp파일
 		break;
 		
+		//네이버로그인시 콜백
 		case("/naver.do"): // 실행시 ~~.do사용
 			viewPage = "naverCallback.jsp"; // 실행할 jsp파일
 		break;
-		
+	
 		
 		/*
 		 * 메소드 실행
@@ -212,9 +215,23 @@ public class MainController extends HttpServlet {
 			}
 			
 			break;
-		
-			//----------------------------------------김도우
 			
+		//기부
+		case("/Donation.do"): // 실행시 ~~.do사용
+			command = new DonateSumCommand(); // 커맨드(메소드)적기
+			command.execute(request, response, session);
+			viewPage = "Donation.jsp"; // 실행할 jsp파일
+		break;
+		
+		//기부버튼 클릭시
+		case("/DonateClick.do"): // 실행시 ~~.do사용
+			command = new DonateCommand(); // 커맨드(메소드)적기
+			command.execute(request, response, session);
+			viewPage = "DonationSuccess.jsp"; // 실행할 jsp파일
+			break;
+
+			//----------------------------------------김도우
+	
 			/*
 			 * ----------------------------- 
 			 * 21.05.21 seungyeon Item 상세페이지 

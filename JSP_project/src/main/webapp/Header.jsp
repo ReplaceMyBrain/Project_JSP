@@ -82,7 +82,7 @@
     <header class="header">
        <div class="header_logo">
             
-            <a href="" class="title"><h1>마음만은 TOP 개발자</h1></a>
+            <a href="Main.do" class="title"><h1>마음만은 TOP 개발자</h1></a>
             <ul>
             
             

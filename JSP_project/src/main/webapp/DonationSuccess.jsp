@@ -5,9 +5,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <title>donate</title>
-</head>
-
+</head>		
+<script>
+	$(document).ready(function() {
+		 alert('${amount}$ 기부되었습니다.');
+	});	
+</script> 
 <style>
 
 #donate {
@@ -44,18 +49,18 @@
   bottom:0;
 }
 
-
 #total {
   color:#ff2d54;
 }
 
 </style>
 
+
 <body>
 <div id="donate">
 
   <div id="donate-black">
-    <h1>Donate to Developers !</h1>
+     <h1>Donate to Developers !</h1>
     <p>This web is—and always will be—free. Our mission is to provide users amazing experience and lots of information. Your donation directly helps the development of 나는야 개발자.</p>
   	<br><p id=total> Total: ${sumDonate }$</p>
   </div><br>
@@ -82,7 +87,7 @@
           <input autocomplete="off" type="radio" name="amount" id="amount50" value="50">
           <label for="amount50">$50</label><br><br>
         
-           <input type="submit" id="button" value="Donate to our !" />
+           <input type="submit" id="button" value="Donate to our !">
         </form>
     </div>
   </div>
