@@ -1,5 +1,6 @@
 package com.jspproject.bbs.command;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,40 +12,42 @@ import com.jspproject.bbs.dao.ProfileDao;
 import com.jspproject.bbs.dto.PostDto;
 import com.jspproject.bbs.dto.ProfileDto;
 
-public class LoadMyItemCommand implements Command {
+public class LoadUsersTip implements Command {
 
 	int numOfTuplesPerPage = 10;
+	
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+	public void execute(HttpServletRequest request, HttpServletResponse response, HttpSession session)
+			throws IOException {
 		
-		String currentUser = "'"+(String)session.getAttribute("email")+"'";
+		String currentUser = "'" + (String)session.getAttribute("stranger") + "'";
 		
 		ProfileDao profileDao = new ProfileDao();
 		ProfileDto dto = profileDao.loadProfile(currentUser);
 
 		int requestPage = 1;
 		MyPostDao listDao = new MyPostDao();
-		
 		session = request.getSession();
-		
-		
+
 		if ( request.getParameter("page") != null) {
 			requestPage = Integer.parseInt(request.getParameter("page"));
 			session.setAttribute("courrentPage", requestPage);
 		}
 
-		int countedTuple = listDao.selectItem(currentUser);
+		int countedTuple = listDao.selectTip(currentUser);
 
 		ArrayList<Integer> pageList = calcNumOfPage(countedTuple);
 		session.setAttribute("pageList", pageList);
-		ArrayList<PostDto> dtos = listDao.myItemList(currentUser, requestPage, numOfTuplesPerPage);
-		request.setAttribute("myList", dtos);
+		session.setAttribute("do", "profileOnlyIdea.do");
 		
-		request.setAttribute("myprofile", dto);
+		ArrayList<PostDto> dtos = listDao.myTipList(currentUser, requestPage, countedTuple);
+		
 		request.setAttribute("count", Integer.toString(countedTuple));
-		session.setAttribute("do", "profileOnlyTool.do");
+		request.setAttribute("myList", dtos);
+		System.out.println(dtos);
+		request.setAttribute("myprofile", dto);
 	}
-	
+
 	public ArrayList<Integer> calcNumOfPage(int countedTuple) {
 		ArrayList<Integer> arr = new ArrayList<Integer>();
 		int calcPage = 0;
@@ -59,5 +62,4 @@ public class LoadMyItemCommand implements Command {
 		}
 		return arr;
 	}
-
 }

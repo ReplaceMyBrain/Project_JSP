@@ -1,27 +1,25 @@
 package com.jspproject.bbs.command;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.jspproject.bbs.dao.ItemsDao;
+import com.jspproject.bbs.dao.TipsDao;
 import com.jspproject.bbs.dto.PostDto;
 
-
-public class LoadItemsCommand implements Command {
-
+public class LoadProtoTipCommand implements Command {
 	int numOfTuplesPerPage = 15;
-	
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+	public void execute(HttpServletRequest request, HttpServletResponse response, HttpSession session)
+			throws IOException {
 		// TODO Auto-generated method stub
-		
-		ItemsDao dao = new ItemsDao();
+
+		TipsDao dao = new TipsDao();
 		int requestPage = 1;
 		session = request.getSession();
-		
 		
 		if ( request.getParameter("page") != null) {
 			int posts = (int)session.getAttribute("postsCount");
@@ -29,13 +27,11 @@ public class LoadItemsCommand implements Command {
 			session.setAttribute("postsCount", requestPage);
 		}
 		
-		ArrayList<PostDto> dtos = dao.list(requestPage, numOfTuplesPerPage);
+		ArrayList<PostDto> dtos = dao.listProto(requestPage, numOfTuplesPerPage);
 		request.setAttribute("list", dtos);
-		session.setAttribute("CATEGORY", "ITEM");
-		session.setAttribute("CONDITION", "I_TITLE");
-		session.setAttribute("do", "lsit.do");
+		session.setAttribute("CATEGORY", "TIP");
+		session.setAttribute("TITLE", "T_TITLE");
+		session.setAttribute("do", "protoTipLsit.do");
 	}
-	
-	
 
 }

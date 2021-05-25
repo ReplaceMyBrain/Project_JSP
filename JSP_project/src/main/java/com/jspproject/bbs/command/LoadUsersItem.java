@@ -1,5 +1,6 @@
 package com.jspproject.bbs.command;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,11 +12,13 @@ import com.jspproject.bbs.dao.ProfileDao;
 import com.jspproject.bbs.dto.PostDto;
 import com.jspproject.bbs.dto.ProfileDto;
 
-public class LoadMyItemCommand implements Command {
+public class LoadUsersItem implements Command {
 
 	int numOfTuplesPerPage = 10;
+	
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+	public void execute(HttpServletRequest request, HttpServletResponse response, HttpSession session)
+			throws IOException {
 		
 		String currentUser = "'"+(String)session.getAttribute("email")+"'";
 		

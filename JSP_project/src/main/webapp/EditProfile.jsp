@@ -117,7 +117,7 @@
 	<body style="background-color:rgb(250,250,250);">
 		<div id="container">
 			<form name="edit" action="edit.do" method="post"><div class="edit">
-				<label id="user">Email</label><br>
+				<label id="user"><%session.getAttribute("email"); %></label><br>
 				<div>
 					<label>이름</label> <input type="text" name="myName" class="textbox" value=${info.userName }> 
 				</div>

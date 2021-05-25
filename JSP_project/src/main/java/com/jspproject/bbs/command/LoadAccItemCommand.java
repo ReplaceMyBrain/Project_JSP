@@ -1,5 +1,6 @@
 package com.jspproject.bbs.command;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,13 +10,13 @@ import javax.servlet.http.HttpSession;
 import com.jspproject.bbs.dao.ItemsDao;
 import com.jspproject.bbs.dto.PostDto;
 
-
-public class LoadItemsCommand implements Command {
+public class LoadAccItemCommand implements Command {
 
 	int numOfTuplesPerPage = 15;
 	
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+	public void execute(HttpServletRequest request, HttpServletResponse response, HttpSession session)
+			throws IOException {
 		// TODO Auto-generated method stub
 		
 		ItemsDao dao = new ItemsDao();
@@ -29,13 +30,11 @@ public class LoadItemsCommand implements Command {
 			session.setAttribute("postsCount", requestPage);
 		}
 		
-		ArrayList<PostDto> dtos = dao.list(requestPage, numOfTuplesPerPage);
+		ArrayList<PostDto> dtos = dao.listAcc(requestPage, numOfTuplesPerPage);
 		request.setAttribute("list", dtos);
 		session.setAttribute("CATEGORY", "ITEM");
 		session.setAttribute("CONDITION", "I_TITLE");
-		session.setAttribute("do", "lsit.do");
+		session.setAttribute("do", "lsitAcc.do");
 	}
-	
-	
 
 }

@@ -78,6 +78,14 @@
     		<input type="text" placeholder="&#xf002; search" >
     	</div>
     	
+    	<div class="category">
+				<div style="color: rgb(250,250,250); background-color: rgb(0,0,0);"onclick="location.href='';">ALL</div>
+				<div style="color: rgb(250,250,250); background-color: rgb(255,149,0);"onclick="location.href='';">COMPUTER</div></a>
+				<div style="color: rgb(250,250,250); background-color: rgb(88,86,214);"onclick="location.href='';">ACCESSORIES</div>
+				<div style="color: rgb(250,250,250); background-color: rgb(52,199,89);"onclick="location.href='';">DESK CHAIR</div>
+				<div style="color: rgb(250,250,250); background-color: rgb(255,204,0);"onclick="location.href='';">OTHERS</div>
+			</div>
+			
 		<div id="columns">
 			<c:forEach items="${list}" var="dto">
   			<figure>

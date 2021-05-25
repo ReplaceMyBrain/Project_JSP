@@ -10,6 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.jspproject.bbs.command.AdminUserDeleteCommand;
+import com.jspproject.bbs.command.AdminUserRecoverCommand;
+import com.jspproject.bbs.command.AdminUserlistCommand;
+import com.jspproject.bbs.command.AdminuserSearchCommand;
 import com.jspproject.bbs.command.Command;
 import com.jspproject.bbs.command.CommentContentCommand;
 import com.jspproject.bbs.command.CommentDeleteCommand;
@@ -131,6 +135,7 @@ public class MainController extends HttpServlet {
 		
 		//메인으로
 		case("/Main.do"): // 실행시 ~~.do사용
+			session.setAttribute("postsCount", 1);
 			viewPage = "Main.jsp";
 		break;
 		
@@ -388,7 +393,6 @@ public class MainController extends HttpServlet {
 				command.execute(request, response, session);
 				viewPage = "AdminUserList.jsp";
 				break;
-			}
 				//-----------------------------------------도영
 			
 			//아이템목록

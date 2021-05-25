@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>마이페이지</title>
+<title>Insert title here</title>
 </head>
 <style>
 	
@@ -33,6 +33,7 @@
 		column-gap: 0;
 		margin: 100px;
 	}
+	
 	#columns figure{
 		display: inline-block;
 		margin:1px;
@@ -56,6 +57,7 @@
 		margin-right: 100px;
 		margin-top:20px;
 	}
+	
 	.pagination {
 	width: 100%;
 	margin: 50px;
@@ -74,9 +76,7 @@
 	<div id = "container">
 		<div id ="profile">
 			${myprofile.userName } 
-			<a href = "editView.do" id = "edit">
-				&#9881;
-			</a>
+			
 				<div id = "counts">
 				${count} posts
 				</div>
