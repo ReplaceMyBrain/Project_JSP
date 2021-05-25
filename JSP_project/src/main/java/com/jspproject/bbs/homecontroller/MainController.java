@@ -361,6 +361,34 @@ public class MainController extends HttpServlet {
 				command.execute(request, response, session);
 				viewPage = "CommentDeleteView.jsp"; // 실행할 jsp파일
 				break;
+			/*
+			 * ----------------------------- 
+			 * 21.05.24 seungyeon adminuser 상세페이지 
+			 *   -----------------------------
+			 */	
+			// adminuser - list 불러오기 0523 이승연
+			case ("/AdminUserlist.do"): // 실행시 ~~.do사용
+				command = new AdminUserlistCommand(); // 커맨드(메소드)적기
+				command.execute(request, response, session);
+				viewPage = "AdminUserList.jsp"; // 실행할 jsp파일
+				break;
+			case ("/AdminUserDelete.do"): // 실행시 ~~.do사용
+				command = new AdminUserDeleteCommand(); // 커맨드(메소드)적기
+				command.execute(request, response, session);
+				viewPage = "AdminUserDeleteView.jsp"; // 실행할 jsp파일
+				break;
+			case ("/AdminUserRecover.do"): // 실행시 ~~.do사용
+				command = new AdminUserRecoverCommand(); // 커맨드(메소드)적기
+				command.execute(request, response, session);
+				viewPage = "AdminUserRecoverView.jsp"; // 실행할 jsp파일
+				break;
+				//리스트  검색시
+			case("/AdminUserSearch.do"):
+				command = new AdminuserSearchCommand();
+				command.execute(request, response, session);
+				viewPage = "AdminUserList.jsp";
+				break;
+			}
 				//-----------------------------------------도영
 			
 			//아이템목록
