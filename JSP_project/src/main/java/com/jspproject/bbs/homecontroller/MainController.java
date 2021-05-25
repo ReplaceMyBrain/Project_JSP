@@ -388,8 +388,8 @@ public class MainController extends HttpServlet {
 				command.execute(request, response, session);
 				viewPage = "AdminUserList.jsp";
 				break;
-			}
-				//-----------------------------------------도영
+			
+			//-----------------------------------------도영
 			
 			//아이템목록
 			case("/list.do"):
@@ -452,7 +452,7 @@ public class MainController extends HttpServlet {
 //				viewPage = "profile.do";
 //				break;
 			
-				//-------------------------------------도영
+			//-------------------------------------도영
 		}		
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
