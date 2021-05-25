@@ -8,16 +8,36 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-	.container {
+
+	.search {
+    	position: relative;
+    	text-align: center;
+    	width: 900px;
+    	margin: 0 auto;
+    	font-family: Georgia, Serif;
+		font-size: 30px;
+	}
+	
+	input {
+    	width: 100%;
+    	border-radius: 20px;
+    	border: 1px solid #bbb;
+    	margin: 10px 0;
+    	padding: 10px 12px;
+    	font-family: fontAwesome;
+	}
+	
+	
+ 	.container {
 		margin: 200px;
-		margin-top: 100px;
+		margin-top: 20px;
 		margin-bottom: 0px;
 	}
 	
 		
 	.title {
-		margin: 50px;
-		margin-bottom: 8px;
+		margin-left: 50px;
+		
 	}
 	
 	.content {
@@ -28,10 +48,15 @@
 	}
 	.views {
 		color: rgb(117,117,117);
-	}
+	} 
 </style>
 </head>
 <body>
+	<form action="search.do?table=${CATEGORY }&condition=${CONDITION }" method="post">
+		<div class="search">
+    	<script src="https://kit.fontawesome.com/8eb5905426.js" crossorigin="anonymous"></script>
+    	<input type="text" placeholder="&#xf002; search" >
+    </div>
 	<div>
 	<c:forEach items="${list}" var="dto">
 		<div OnClick="location.href ='ContentViewNotice.do?n_num=${dto.num }'" class="container">
@@ -48,5 +73,6 @@
 	</c:forEach>
 	</div>
 	<%@include file ="Footer.jsp" %> 
+	</form>
 </body>
 </html>
