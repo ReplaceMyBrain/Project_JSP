@@ -164,7 +164,7 @@ div {
 			</div>
 			<hr />
 			<div class="form-group">
-				<div class="m-2">${content_view.i_image}</div>
+				<div class="m-2"><img width="300" src="${content_view.i_image }" /></div>
 				<div class="m-2">${content_view.i_content}</div>
 			</div>
 		</form>
