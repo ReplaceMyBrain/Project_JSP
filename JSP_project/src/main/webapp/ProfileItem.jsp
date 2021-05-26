@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>마이페이지</title>
 </head>
 <style>
 	
@@ -33,7 +33,6 @@
 		column-gap: 0;
 		margin: 100px;
 	}
-	
 	#columns figure{
 		display: inline-block;
 		margin:1px;
@@ -57,7 +56,6 @@
 		margin-right: 100px;
 		margin-top:20px;
 	}
-	
 	.pagination {
 	width: 100%;
 	margin: 50px;
@@ -75,8 +73,11 @@
 <body style="background-color:rgb(250,250,250);"> 
 	<div id = "container">
 		<div id ="profile">
-			${myprofile.userName } 
-			<a href="https://github.com/${myprofile.userGit }">${myprofile.userGit }</a>
+			${myprofile.userName }
+			<a href="https://github.com/${myprofile.userGit }">${myprofile.userGit }</a> 
+			<a href = "editView.do" id = "edit">
+				&#9881;
+			</a>
 				<div id = "counts">
 				${count} posts
 				</div>
@@ -85,16 +86,23 @@
 		<hr id= "line" style="color:#zzxcvc">
 	</div>
 	<div class = "buttons">
-			<a href = "userProfile.do">All Posting</a>
-			<a href = "userOnlyItem.do">Items</a>
-			<a href = "userOnlyTip.do">Idea and Tip</a>
+			<a href = "profile.do">All Posting</a>
+			<a href = "profileOnlyTool.do">My Item</a>
+			<a href = "profileOnlyIdea.do">My Idea&Tip</a>
+			<a href = "ItemInfoView.do">Add Item</a>
+			<a href = "TipViewBoard.do">Add Tip</a>
+			<% String strAdmin = (String) session.getAttribute("admin");
+			int adminNum = Integer.parseInt(admin);
+			
+			if(adminNum == 1){%>
+			<a href = "NoticeView.do">Add Notice</a><%}%>
 		</div>
 		
 		<div id="columns">
 			<c:forEach items="${myList}" var="dto">
 				<figure>
-				<a href="ContentViewItem.do?i_num=${dto.num }">
-  					<img src=${dto.image }>
+					<a href="ContentViewItem.do?i_num=${dto.num }">
+  						<img src=${dto.image }>
   					</a>
 				</figure>
 			</c:forEach>
