@@ -88,7 +88,9 @@
 			<a href = "profile.do">All Posting</a>
 			<a href = "profileOnlyTool.do">My Item</a>
 			<a href = "profileOnlyIdea.do">My Idea&Tip</a>
-			<a href = "">Add Posting</a>
+			<a href = "ItemInfoView.do">Add Item</a>
+			<a href = "TipViewBoard.do">Add Tip</a>
+			<a href = "NoticeView.do">Add Notice</a><!-- 관리자만 띄우게 하기 -->
 		</div>
 		
 		<div id="columns">

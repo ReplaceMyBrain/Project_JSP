@@ -85,10 +85,9 @@
 		<hr id= "line" style="color:#zzxcvc">
 	</div>
 	<div class = "buttons">
-			<a href = "profile.do">All Posting</a>
-			<a href = "profileOnlyTool.do">My Item</a>
-			<a href = "profileOnlyIdea.do">My Idea&Tip</a>
-			<a href = "">Add Posting</a>
+			<a href = "userProfile.do">All Posting</a>
+			<a href = "profileOnlyItem.do">My Item</a>
+			<a href = "profileOnlyTip.do">My Idea and Tip</a>
 		</div>
 		
 		<div id="columns">

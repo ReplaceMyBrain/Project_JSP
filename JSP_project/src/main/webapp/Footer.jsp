@@ -73,8 +73,6 @@
             <h2> 나는야 개발자 </h2>
             
             <ul class="foot_link">
-                <li><a href="">1:1문의</a></li>
-                <li>I</li>
                 <li><a href="Donation.do">기부</a></li>
                 <li>I</li>
                 <li><a href="TermsAndConditions.do" target='_blank'>이용약관</a></li>
