@@ -76,7 +76,7 @@
 	<div id = "container">
 		<div id ="profile">
 			${myprofile.userName } 
-			<a href="https://github.com/${myprofile.userGit }">${myprofile.userGit }</a>
+			
 				<div id = "counts">
 				${count} posts
 				</div>
