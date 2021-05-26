@@ -20,7 +20,8 @@
      height: auto;
      width: 100vw;
      font-family:  "open sans";
-     padding-top: 20px;
+     padding-top: 30px;
+     padding-bottom: 30px;
      color: #fff;
  }
  .footer_info{
@@ -52,6 +53,7 @@
 }
 .foot_link li{
     margin: 0 10px;
+    color : #fff;
 }
 .foot_link a{
     text-decoration: none;

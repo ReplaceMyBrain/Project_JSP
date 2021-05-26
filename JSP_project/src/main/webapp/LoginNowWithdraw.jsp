@@ -9,6 +9,13 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
   <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+  
+  <script>
+	$(document).ready(function() {
+	    alert('탈퇴되었습니다.');
+	});	
+</script> 
+
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
@@ -203,10 +210,10 @@
   </script>
     <script type="text/javascript">
     //네이버 api
-    var naver_id_login = new naver_id_login("GEn5BsvETFtbptoXb3iD", "http://localhost:8090/JSP_project/naver.do");
+    var naver_id_login = new naver_id_login("GEn5BsvETFtbptoXb3iD", "http://localhost:8090/project_JSP/naver.do");
     var state = naver_id_login.getUniqState();
     naver_id_login.setButton("white", 2,40);
-    naver_id_login.setDomain("/JSP_project");
+    naver_id_login.setDomain("/project_JSP");
     naver_id_login.setState(state);
     naver_id_login.setPopup();
     naver_id_login.init_naver_id_login();

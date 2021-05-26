@@ -1,11 +1,11 @@
 package com.jspproject.bbs.dto;
 
 public class ProfileDto {
-
 	
 	String userEmail;
 	String userName;
 	String phoneNumber;
+	String userAddress;
 	String userGit;
 	String password;
 	public ProfileDto() {
@@ -26,15 +26,24 @@ public class ProfileDto {
 		this.userGit = userGit;
 	}
 	
-	public ProfileDto(String userEmail, String userName, String phoneNumber, String userGit, String password) {
+	public ProfileDto(String userEmail, String userName, String phoneNumber, String userAddress, String userGit) {
 		super();
 		this.userEmail = userEmail;
 		this.userName = userName;
 		this.phoneNumber = phoneNumber;
+		this.userAddress = userAddress;
+		this.userGit = userGit;
+	}
+	public ProfileDto(String userEmail, String userName, String phoneNumber, String userAddress, String userGit,
+			String password) {
+		super();
+		this.userEmail = userEmail;
+		this.userName = userName;
+		this.userAddress = userAddress;
+		this.phoneNumber = phoneNumber;
 		this.userGit = userGit;
 		this.password = password;
 	}
-
 	public String getUserEmail() {
 		return userEmail;
 	}
@@ -46,6 +55,12 @@ public class ProfileDto {
 	}
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+	public String getUserAddress() {
+		return userAddress;
+	}
+	public void setUserAddress(String userAddress) {
+		this.userAddress = userAddress;
 	}
 	public String getPhoneNumber() {
 		return phoneNumber;

@@ -30,6 +30,7 @@ import com.jspproject.bbs.command.DeleteAccountCommand;
 import com.jspproject.bbs.command.DonateCommand;
 import com.jspproject.bbs.command.DonateSumCommand;
 import com.jspproject.bbs.command.EditProfileCommand;
+import com.jspproject.bbs.command.EditProfileViewCommand;
 import com.jspproject.bbs.command.ItemInfoContentCommand;
 import com.jspproject.bbs.command.ItemInfoInsertCommand;
 import com.jspproject.bbs.command.ItemInfoUpdateCommand;
@@ -472,27 +473,6 @@ public class MainController extends HttpServlet {
 				command.execute(request, response, session);
 				viewPage = "Profile.jsp";
 				break;
-				
-			//마이페이지에서 편집페이지로 이동	
-			case("/editView.do"):
-				viewPage = "EditProfile.jsp";
-				break;
-				
-			case("/edit.do"):
-				command = new EditProfileCommand();
-				command.execute(request, response, session);
-				viewPage = "profile.do";
-				break;
-			
-			case("/changePassword.do"):
-				command = new ChangePasswordCommand();
-				command.execute(request, response, session);
-				viewPage = "profile.do";
-				
-			case("/deleteAccount.do"):
-				command = new DeleteAccountCommand();
-				command.execute(request, response, session);
-				viewPage = "profile.do";
 			
 			//-------------------------------------도영
 
@@ -661,7 +641,42 @@ public class MainController extends HttpServlet {
 			command.execute(request, response, session);
 			viewPage = "ListTIp.jsp";
 			break;
+		//---------------------------2021.05.27 도우
+		case("/editView.do"):
+			command = new EditProfileViewCommand();
+			command.execute(request, response, session);
+			viewPage = "EditProfile.jsp";
+			break;
+			
+		//개인정보 수정
+		case("/edit.do"):
+			command = new EditProfileCommand();
+			command.execute(request, response, session);
+			viewPage = "infoedit.do";
+			break;
 		
+		case("/infoedit.do"):
+			command = new EditProfileViewCommand();
+		command.execute(request, response, session);
+		viewPage = "EditProfileEditSuccess.jsp";
+		break;
+		
+		//비번 수정
+		case("/changePassword.do"):
+			command = new ChangePasswordCommand();
+			command.execute(request, response, session);
+			viewPage = "pwd.do";
+			
+		case("/pwd.do"):
+			command = new EditProfileViewCommand();
+			command.execute(request, response, session);
+			viewPage = "EditProfilePwdSuccess.jsp";
+			
+		//탈퇴	
+		case("/deleteAccount.do"):
+			command = new DeleteAccountCommand();
+			command.execute(request, response, session);
+			viewPage = "LoginNowWithdraw.jsp";
 		
 		}		
 

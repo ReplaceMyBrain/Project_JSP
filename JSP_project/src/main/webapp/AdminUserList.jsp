@@ -51,7 +51,7 @@ a:link {
 }
 
 table, th, td {
-	width: 	1500px;
+	width: 	1400px;
 	height: 45px;
 	margin-left: auto;
 	margin-right: auto;
@@ -65,6 +65,12 @@ h3 {
 div {
 	text-align: center;
 	align-items: center;
+}
+.ADDRESS{
+ 	width: 3200px;
+}
+.name{
+	width: 500px;
 }
 
 .layer {
@@ -141,26 +147,35 @@ div {
 	<table id="userList">
 		<tr id="title" >
 			<th>EMAIL</th>
-			<th>NAME</th>
-			<th>ADDRESS</th>
+			<th class = "name">NAME</th>
+			<th class = "ADDRESS" >ADDRESS</th>
 			<th>TEL</th>
 			<th>GIT</th>
 			<th>CREATE</th>
 			<th>DELETE</th>
-			<th>ADMIN</th>
+			<th>USERINFO</th>
 			<th></th>
 		</tr>
 		<c:forEach items="${user_list}" var="userList">
 			<!-- 리스트커멘드에서 정해줌 아이템즈는  -->
 			<tr>
 				<td id="user_email">${userList.email}</td>
-				<td>${userList.name}</td>
-				<td>${userList.adress}</td>
+				<td class = "name">${userList.name}</td>
+				<td class = "ADDRESS" >${userList.adress}</td>
 				<td>${userList.tel}</td>
 				<td>${userList.git}</td>
 				<td>${userList.createdate}</td>
 				<td>${userList.deletedate}</td>
-				<td>${userList.admin}</td>
+				<td> <c:if test="${userList.admin eq 0 && empty userList.deletedate}">  
+				회원
+				</c:if>
+				<c:if test="${userList.admin eq 1 && empty userList.deletedate}">  
+				관리자
+				</c:if>
+				<c:if test="${userList.admin eq 0 && !empty userList.deletedate}">  
+				탈퇴회원
+				</c:if>
+				</td>
 				<td>
 					<button type="button" onclick="deleteUser(this.id);" name="deleteuser" id="${userList.email}" value="${userList.email}" class="btn btn-primary pull-right">탈퇴하기</button>
 					<button type="button" onclick="recoverUser(this.id);" name="recoveruser" id="${userList.email}" value="${userList.email}" class="btn btn-primary pull-right">복구하기</button>
