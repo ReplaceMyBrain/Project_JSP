@@ -20,7 +20,7 @@ public class LoadUsersTip implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response, HttpSession session)
 			throws IOException {
 		
-		String currentUser = "'" + (String)session.getAttribute("stranger") + "'";
+		String currentUser = "'"+(String)session.getAttribute("stranger")+"'";
 		
 		ProfileDao profileDao = new ProfileDao();
 		ProfileDto dto = profileDao.loadProfile(currentUser);
@@ -38,7 +38,7 @@ public class LoadUsersTip implements Command {
 
 		ArrayList<Integer> pageList = calcNumOfPage(countedTuple);
 		session.setAttribute("pageList", pageList);
-		session.setAttribute("do", "profileOnlyTip.do");
+		session.setAttribute("do", "userOnlyTip.do");
 		
 		ArrayList<PostDto> dtos = listDao.myTipList(currentUser, requestPage, countedTuple);
 		

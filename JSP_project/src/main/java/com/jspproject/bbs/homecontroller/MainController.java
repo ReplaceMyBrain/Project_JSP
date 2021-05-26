@@ -49,6 +49,7 @@ import com.jspproject.bbs.command.LoadProtoTipCommand;
 import com.jspproject.bbs.command.LoadTipsCommand;
 import com.jspproject.bbs.command.LoadUserInfo;
 import com.jspproject.bbs.command.LoadUsersItem;
+import com.jspproject.bbs.command.LoadUsersTip;
 import com.jspproject.bbs.command.NoticeCommentContentCommand;
 import com.jspproject.bbs.command.NoticeCommentDeleteCommand;
 import com.jspproject.bbs.command.NoticeCommentModifyCommand;
@@ -590,14 +591,14 @@ public class MainController extends HttpServlet {
 			viewPage = "UserPage.jsp";
 		break;
 
-		case("/profileOnlyItem.do"):
+		case("/userOnlyItem.do"):
 			command = new LoadUsersItem();
 			command.execute(request, response, session);
 			viewPage = "UserPage.jsp";
 		break;
 		
-		case("/profileOnlyTip.do"):
-			command = new LoadTipsCommand();
+		case("/userOnlyTip.do"):
+			command = new LoadUsersTip();
 			command.execute(request, response, session);
 			viewPage = "UserPage.jsp";
 		break;

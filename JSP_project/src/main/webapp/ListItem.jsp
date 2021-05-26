@@ -99,7 +99,6 @@
 		max-height: 100%;
 		overflow: hidden;
 		
-	
 	}
 	figure figcaption #views{
 		/* top: 100%; */
@@ -133,11 +132,11 @@
     		</div>
     	
     		<div class="category">
-				<div style="color: rgb(250,250,250); background-color: rgb(0,0,0);"onclick="location.href='';">ALL</div>
-				<div style="color: rgb(250,250,250); background-color: rgb(255,149,0);"onclick="location.href='';">COMPUTER</div></a>
-				<div style="color: rgb(250,250,250); background-color: rgb(88,86,214);"onclick="location.href='';">ACCESSORIES</div>
-				<div style="color: rgb(250,250,250); background-color: rgb(52,199,89);"onclick="location.href='';">DESK CHAIR</div>
-				<div style="color: rgb(250,250,250); background-color: rgb(255,204,0);"onclick="location.href='';">OTHERS</div>
+				<div style="color: rgb(250,250,250); background-color: rgb(0,0,0);"onclick="location.href='list.do';">ALL</div>
+				<div style="color: rgb(250,250,250); background-color: rgb(255,149,0);"onclick="location.href='ComItem.do';">COMPUTER</div></a>
+				<div style="color: rgb(250,250,250); background-color: rgb(88,86,214);"onclick="location.href='AccItem.do';">ACCESSORIES</div>
+				<div style="color: rgb(250,250,250); background-color: rgb(52,199,89);"onclick="location.href='DeskItem.do';">DESK CHAIR</div>
+				<div style="color: rgb(250,250,250); background-color: rgb(255,204,0);"onclick="location.href='OtherItem.do';">OTHERS</div>
 			</div>
 			
 			<div class="columns">

@@ -21,7 +21,7 @@ public class LoadUserInfo implements Command {
 			throws IOException {
 		
 		String currentUser = "'" + (String)session.getAttribute("stranger") + "'";
-
+		System.out.println(currentUser);
 		ProfileDao profileDao = new ProfileDao();
 		ProfileDto dto = profileDao.loadProfile(currentUser);
 

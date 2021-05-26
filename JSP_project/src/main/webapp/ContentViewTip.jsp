@@ -1,3 +1,4 @@
+<%@page import="com.jspproject.bbs.dto.ContentItemdto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -154,7 +155,8 @@ div {
 			<br />
 
 			<h6 class="m-2">
-				By <a href="content_view.do?user_email=${content_view.user_email }">${content_view.name }</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				
+				By <a href="userProfile.do?">${content_view.name }</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				Date <i>${content_view.tw_regist}</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				Views <i>${content_view.t_hits}</i>
 			</h6>

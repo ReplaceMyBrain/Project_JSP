@@ -86,8 +86,8 @@
 	</div>
 	<div class = "buttons">
 			<a href = "userProfile.do">All Posting</a>
-			<a href = "profileOnlyItem.do">My Item</a>
-			<a href = "profileOnlyTip.do">My Idea and Tip</a>
+			<a href = "userOnlyItem.do">Items</a>
+			<a href = "userOnlyTip.do">Idea and Tip</a>
 		</div>
 		
 		<div id="columns">

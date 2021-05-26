@@ -37,8 +37,21 @@
     color: #bbb;
 	}
 
+	.category {
+		margin-left:200px;
+		margin-top:10px;
+		
+	}
+	.category div {
+		 display: inline-block;
+		 padding: 12px;
+		 padding-left: 20px;
+		 padding-right: 20px;
+		 margin: 0px;
+		 border-radius: 30px;
+	}
 	
-	#columns{
+	.columns{
 		column-width:250px;
 		column-gap: 15px;
 		max-width: 1300px;
@@ -47,7 +60,7 @@
 		font-family: Georgia, Serif;
 		font-size: 20px;
 	}
-	#columns figure{
+	.columns figure{
 		display: inline-block;
 		/* border : 1px solid rgba(0,0,0,0.2); */
 		margin:0;
@@ -56,16 +69,16 @@
 		/* box-shadow:10px 10px 5px rgba(2,2,2,0.2); */
 	}
 	
-	#columns figure img{
+	.columns figure img{
 		width: 100%;
 		border-radius: 20px;
 	}
 	
-	#columns figcaption {
+	.columns figcaption {
 		margin-left:20px;
 	}
 	
-	figure:hover {
+	figure:hover img{
 	opacity: 0.4;
 	}
 	
@@ -79,12 +92,12 @@
     	</div>
     	
     	<div class="category">
-				<div style="color: rgb(250,250,250); background-color: rgb(0,0,0);"onclick="location.href='';">ALL</div>
-				<div style="color: rgb(250,250,250); background-color: rgb(255,149,0);"onclick="location.href='';">COMPUTER</div></a>
-				<div style="color: rgb(250,250,250); background-color: rgb(88,86,214);"onclick="location.href='';">ACCESSORIES</div>
-				<div style="color: rgb(250,250,250); background-color: rgb(52,199,89);"onclick="location.href='';">DESK CHAIR</div>
-				<div style="color: rgb(250,250,250); background-color: rgb(255,204,0);"onclick="location.href='';">OTHERS</div>
-			</div>
+				<div style="color: rgb(250,250,250); background-color: rgb(0,0,0);"onclick="location.href='list2.do';">ALL</div>
+				<div style="color: rgb(250,250,250); background-color: rgb(255,149,0);"onclick="location.href='CodeTip.do';">CODE</div></a>
+				<div style="color: rgb(250,250,250); background-color: rgb(88,86,214);"onclick="location.href='ProtoTip.do';">PROTOTYPE</div>
+				<div style="color: rgb(250,250,250); background-color: rgb(52,199,89);"onclick="location.href='InfoTip.do';">INFO</div>
+				<div style="color: rgb(250,250,250); background-color: rgb(255,204,0);"onclick="location.href='OtherTip.do';">OTHERS</div>
+		</div>
 			
 		<div id="columns">
 			<c:forEach items="${list}" var="dto">

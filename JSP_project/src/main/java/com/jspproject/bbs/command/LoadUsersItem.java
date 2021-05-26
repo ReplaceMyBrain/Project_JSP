@@ -20,7 +20,7 @@ public class LoadUsersItem implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response, HttpSession session)
 			throws IOException {
 		
-		String currentUser = "'"+(String)session.getAttribute("email")+"'";
+		String currentUser = "'"+(String)session.getAttribute("stranger")+"'";
 		
 		ProfileDao profileDao = new ProfileDao();
 		ProfileDto dto = profileDao.loadProfile(currentUser);
@@ -45,7 +45,7 @@ public class LoadUsersItem implements Command {
 		
 		request.setAttribute("myprofile", dto);
 		request.setAttribute("count", Integer.toString(countedTuple));
-		session.setAttribute("do", "profileOnlyItem.do");
+		session.setAttribute("do", "userOnlyItem.do");
 	}
 	
 	public ArrayList<Integer> calcNumOfPage(int countedTuple) {

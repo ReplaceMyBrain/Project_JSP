@@ -23,7 +23,7 @@ public class ContentItemCommand implements Command {
 		int requestPage = 1;
 		
 		String i_num = request.getParameter("i_num");
-		
+		System.out.println("NUMBER is " + i_num);
 		int number = Integer.parseInt(i_num);
 		viewDao.countingItemView(number);
 		
@@ -32,7 +32,7 @@ public class ContentItemCommand implements Command {
 		// 클릭된 게시물 상세페이지 보여주기
 		ContentItemdto dto = dao.contentView(i_num);
 		request.setAttribute("content_view", dto);
-
+		session.setAttribute("stranger", dto.getuser_email());
 		// 최초 목록 진입시 page값을 넘겨주지 않음 -> 초기값인 1페이지 목록을 보여줌
 		// 목록에서 page요청 -> 해당 페이지 번호로 requestPage 설정
 		if (request.getParameter("page") != null) {

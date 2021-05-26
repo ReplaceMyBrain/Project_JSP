@@ -28,14 +28,14 @@
 	}
 	
 	
- 	.container {
+ 	.noticeContainer {
 		margin: 200px;
 		margin-top: 20px;
 		margin-bottom: 0px;
 	}
 	
 		
-	.title {
+	.noticeTitle {
 		margin-left: 50px;
 		
 	}
@@ -59,9 +59,9 @@
     </div>
 	<div>
 	<c:forEach items="${list}" var="dto">
-		<div OnClick="location.href ='ContentViewNotice.do?n_num=${dto.num }'" class="container">
+		<div OnClick="location.href ='ContentViewNotice.do?n_num=${dto.num }'" class="noticeContainer">
 			<div class = "textArea">
-				<div class = "title">
+				<div class = "noticeTitle">
 					<h2> ${dto.title } </h2>
 				</div>
 				<div class = "content">

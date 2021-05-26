@@ -32,7 +32,7 @@ public class ContentTipCommand implements Command {
 			// 클릭된 게시물 상세페이지 보여주기
 			ContentTipdto dto = dao.contentView(t_num);
 			request.setAttribute("content_view", dto);
-
+			session.setAttribute("stranger", dto.getuser_email());
 			// 최초 목록 진입시 page값을 넘겨주지 않음 -> 초기값인 1페이지 목록을 보여줌
 			// 목록에서 page요청 -> 해당 페이지 번호로 requestPage 설정
 			if (request.getParameter("page") != null) {
