@@ -203,10 +203,10 @@
   </script>
     <script type="text/javascript">
     //네이버 api
-    var naver_id_login = new naver_id_login("GEn5BsvETFtbptoXb3iD", "http://localhost:8090/project_JSP/naver.do");
+    var naver_id_login = new naver_id_login("GEn5BsvETFtbptoXb3iD", "http://localhost:8090/JSP_project/naver.do");
     var state = naver_id_login.getUniqState();
     naver_id_login.setButton("white", 2,40);
-    naver_id_login.setDomain("/project_JSP");
+    naver_id_login.setDomain("/JSP_project");
     naver_id_login.setState(state);
     naver_id_login.setPopup();
     naver_id_login.init_naver_id_login();

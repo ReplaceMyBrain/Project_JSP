@@ -57,11 +57,11 @@ public class LoginDao {
 			}
 			return result;
 		}
-	public int loginAdmin(String strEmail, String strPwd) {
+	public String loginAdmin(String strEmail, String strPwd) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultset = null;
-		int result =0;
+		String result ="";
 				
 			try {
 				connection = dataSource.getConnection();
@@ -75,7 +75,7 @@ public class LoginDao {
 				resultset = preparedStatement.executeQuery();
 				
 		      if(resultset.next()) {
-		    	  int admin = resultset.getInt("admin");
+		    	  String admin = resultset.getString("admin");
 		    	  result = admin;
 		      } 
 		    } catch (Exception e) {
