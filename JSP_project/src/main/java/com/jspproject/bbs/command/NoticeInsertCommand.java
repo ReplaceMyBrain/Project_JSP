@@ -16,8 +16,7 @@ public class NoticeInsertCommand implements Command {
 		String myEmail = (String) session.getAttribute("email");
 
 		NoticeDao NoticeDao = new NoticeDao();
-		int n_num = NoticeDao.write(N_TITLE, N_CONTENT,myEmail);
-		request.setAttribute("result", n_num);
+		NoticeDao.write(N_TITLE, N_CONTENT,myEmail);
 
 	}
 

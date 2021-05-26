@@ -25,8 +25,7 @@ public class ItemInfoInsertCommand implements Command {
 		String I_CONTENT = null;
 		String I_IMAGE = null;
 		String I_CATEGORY = null;
-//		String myEmail = (String) session.getAttribute("email");
-		String myEmail = "aaa@naver.com";
+		String myEmail = (String) session.getAttribute("email");
 		
 		// 파일크기 제한 설정 (15mb) 
 		int sizeLimit1 = 15 * 1024 * 1024; 
@@ -55,8 +54,7 @@ public class ItemInfoInsertCommand implements Command {
 			String originalFile = multipartRequest1.getOriginalFileName("I_IMAGE");
 			ItemInfoDao itemInfoDao = new ItemInfoDao();
 			I_IMAGE = "save/" + originalFile;
-			int i_num = itemInfoDao.write(I_TITLE, I_CONTENT, I_IMAGE, I_CATEGORY, myEmail); //myEmail
-			request.setAttribute("result", i_num);
+			itemInfoDao.write(I_TITLE, I_CONTENT, I_IMAGE, I_CATEGORY, myEmail); //myEmail
 			
 		} catch (IOException e1) {
 			e1.printStackTrace();

@@ -64,7 +64,7 @@ public class NoticeDao {
 	}
 	
 	//NOTICE 작성
-	public int write(String N_TITLE, String N_CONTENT, String myEmail) {
+	public void write(String N_TITLE, String N_CONTENT, String myEmail) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultset = null;
@@ -106,7 +106,6 @@ public class NoticeDao {
 				e.printStackTrace();
 			}
 		}
-		return n_num;
 	}
 	
 	//notice 쓴 것 읽기

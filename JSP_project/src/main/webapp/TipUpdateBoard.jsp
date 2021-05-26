@@ -15,25 +15,24 @@
 	box-sizing: border-box;
 }
 
-input[type="button"] {
+input[type="submit"] {
 	margin-top: 10px;
 	text-align: center;
 	width: 30%;
 	height: 32px;
-	background: #008CBA;
+	background: #16a085;
 	border: none;
 	border-radius: 2px;
 	color: #FFF;
 }
 
-input[type="button"]:hover, 
-input[type="button"]:focus {
+input[type="submit"]:hover, input[type="submit"]:focus {
 	opacity: 0.8;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 	transition: 0.1s ease;
 }
 
-input[type="button"]:active {
+input[type="submit"]:active {
 	opacity: 1;
 	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 	transition: 0.1s ease;
@@ -62,7 +61,7 @@ article {
 	padding: 20px;
 	width: 100%;
 	background-color: white;
-	height: 640px; /* only for demonstration, should be removed */
+	height: 600px; /* only for demonstration, should be removed */
 }
 
 /* Clear floats after the columns */
@@ -71,11 +70,6 @@ section::after {
 	display: table;
 	clear: both;
 	align: center;
-}
-
-table{
-  border-collapse: separate;
-  border-spacing: 0 5px;
 }
 
 /* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
@@ -87,50 +81,6 @@ table{
 }
 </style>
 </head>
-
-<script type="text/javascript">
-			//Empty Check
-			function UpdateTip(){
-				var form = document.TipUpdate
-				if(form.T_TITLE.value==""){
-					alert("제목을 입력해주세요!"); //alert에 있는 명령은 중요한 것 쓰지 않고 사소한 것만 쓰기!!
-					form.T_TITLE.focus();
-					return false;
-				}
-				
-				else if(form.T_CATEGORY.value==""){
-					alert("카테고리를 선택해주세요!");
-					form.T_CATEGORY.focus();
-					return false;
-				}
-				
-				else if(form.T_IMAGE.value==""){
-					alert("사진을 첨부해주세요!");
-					form.T_IMAGE.focus();
-					return false;
-				}
-				
-				else if(form.T_CONTENT.value==""){
-					alert("내용을 입력해주세요!");
-					form.T_CONTENT.focus();
-					return false;
-				}
-				
-			//Length Check
-		
-		/* 	else if(form.T_CONTENT.value.length <50000){
-				alert("내용은 50000자 이하로 입력해야 합니다.");
-				form.T_CONTENT.select();
-				return false;
-				} */
-			else{
-				alert("게시글 수정에 성공하셨습니다.");
-			}
-				form.submit();
-			}
-			
-		</script>
-
 <body>
 
 	<!-- 게시판 글 수정 양식 영역 시작 -->
@@ -138,23 +88,22 @@ table{
 		<div class="row">
 		<article>
 			<section>
-				<form action="TipUpdateBoard.do" method="post" name="TipUpdate"
+				<form action="TipUpdateBoard.do" method="post"
 					enctype="multipart/form-data">
 					<input type="hidden" value="${read.t_num}" name="T_NUM">
 					<div style="text-align: center;">
 						<h2>아이디어 게시물 수정하기</h2>
-						<br>
 						</div>
 					<table class="table table-bordered"
 						style="margin-left: auto; margin-right: auto; text-align: left;" width=1300 border=0 cellpadding=2>
 						<tr>
 							<th>글 제목 </th>
 							<td><input type="text" name="T_TITLE" placeholder="글 제목"
-								class="form-control"  style="margin: 0px; width: 1160px;" value="${read.t_title}"></td>
+								class="form-control" value="${read.t_title}"></td>
 						</tr>
 						<tr>
 							<th>카테고리 </th>
-							<td><select name="T_CATEGORY" style="margin: 0px; width: 1160px;">
+							<td><select name="T_CATEGORY">
 									<option value="none">선택하세요</option>
 									<option value="코드" selected="selected">코드</option>
 									<option value="프로토타입" selected="selected">프로토타입</option>
@@ -179,7 +128,7 @@ table{
 						</tr>
 						<tr>
 							<th>첨부파일 미리보기</th>
-							<td><img width="500" src="${read.t_image }" /></td>
+							<td><img width="300" src="${read.t_image }" /></td>
 						</tr>
 						<tr>
 						<th>내용</th>
@@ -188,8 +137,7 @@ table{
 						</tr>
 					</table>
 					<div style="text-align: center;">
-					<input type="button" value="수정하기" onclick="UpdateTip()">
-					 <a href="list.do">목록보기</a> 
+					<input type="submit" value="수정하기"> <a href="list.do">목록보기</a>
 					</div>
 				</form>
 			</section>

@@ -19,8 +19,6 @@ public class NoticeUpdateCommand implements Command {
 
 		NoticeDao NoticeDao = new NoticeDao();
 		NoticeDao.update(N_NUM, N_TITLE, N_CONTENT);
-		int n_num = Integer.parseInt(N_NUM);
-		request.setAttribute("result", n_num);
 
 	}
 

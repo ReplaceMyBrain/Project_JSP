@@ -17,24 +17,24 @@
 * {
   box-sizing: border-box;
 }
-    input[type="button"] {
+    input[type="submit"] {
       margin-top: 10px;
       text-align: center;
       width: 30%;
       height: 32px;
-      background: #008CBA;
+      background: #16a085;
       border: none;
       border-radius: 2px;
       color: #FFF;
     }
 
-    input[type="button"]:hover,
-    input[type="button"]:focus {
+    input[type="submit"]:hover,
+    input[type="submit"]:focus {
       opacity: 0.8;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
       transition: 0.1s ease;
     }
-    input[type="button"]:active {
+    input[type="submit"]:active {
       opacity: 1;
       box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
       transition: 0.1s ease;
@@ -72,11 +72,6 @@ section::after {
   clear: both;
 }
 
-table{
-  border-collapse: separate;
-  border-spacing: 0 10px;
-}
-
 
 /* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
 @media (max-width: 1000px) {
@@ -89,44 +84,12 @@ table{
 </head>
 <body>
 
-<script type="text/javascript">
-			//Empty Check
-			function checkView(){
-				var form = document.NoticeInsert
-				if(form.N_TITLE.value==""){
-					alert("제목을 입력해주세요!"); //alert에 있는 명령은 중요한 것 쓰지 않고 사소한 것만 쓰기!!
-					form.N_TITLE.focus();
-					return false;
-				}
-
-				else if(form.N_CONTENT.value==""){
-					alert("내용을 입력해주세요!");
-					form.N_CONTENT.focus();
-					return false;
-				}
-				
-			//Length Check
-		
-			/* else if(form.N_CONTENT.value.length <50000){
-				alert("내용은 50000자 이하로 입력해야 합니다.");
-				form.N_CONTENT.select();
-				return false;
-				} */
-			else{
-				alert("작성에 성공하셨습니다.");
-			}
-				form.submit();
-			}
-			
-		</script>
-
 	<article>
     <section>
-   <form action="NoticeInsert.do" method="post" name="NoticeInsert">
+   <form action="NoticeInsert.do" method="post">
   				 <input type="hidden" value="NoticeInsert" name="command">
   				 <div style="text-align: center;">
 						<h2>공지사항 작성하기</h2>
-						<br>
 						</div>
 			<table class="table table-bordered" style="margin-left: auto; margin-right: auto; text-align: left;" width=1300 border=0 cellpadding=2>
 						<!-- <tr>
@@ -135,15 +98,15 @@ table{
 						</tr> -->
                 <tr>
                 <th>글 제목 </th>
-			 <td><input type="text" name="N_TITLE" placeholder="글 제목" class="form-control" style="margin: 0px; width: 1160px;"></td>
+			 <td><input type="text" name="N_TITLE" placeholder="글 제목" class="form-control"></td>
 			 </tr>
 	   		<tr> 
-	     	   <th>내용<br></th>
+	     	   <th>내용</th>
                     <td><textarea style="margin: 0px; width: 1160px; height: 386px;" name="N_CONTENT"  class="form-control" placeholder="내용을 입력하세요."></textarea></td>
                 </tr>	
                 </table>
                 <div style="text-align: center;">
-				 <input type="button" value="확인" onclick="checkView()">
+				 <input type="submit" value="확인">
 				 </div>
 		</form>
 </section>
