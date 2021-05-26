@@ -91,9 +91,8 @@
 			<a href = "profileOnlyIdea.do">My Idea&Tip</a>
 			<a href = "ItemInfoView.do">Add Item</a>
 			<a href = "TipViewBoard.do">Add Tip</a>
-			<% String admin = (String) session.getAttribute("admin");
+			<%String admin = (String)session.getAttribute("admin");
 			int adminNum = Integer.parseInt(admin);
-			
 			if(adminNum == 1){%>
 			<a href = "NoticeView.do">Add Notice</a><%}%>
 		</div>

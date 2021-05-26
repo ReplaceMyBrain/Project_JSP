@@ -22,7 +22,7 @@ public class UserLoginCommand implements Command {
 		//email값 불러오기
 		String loginEmail = dao.loginEmail(email,pwd);
 		//admin값 불러오기
-		String loginAdmin = dao.loginAdmin(email,pwd);
+		int loginAdmin = dao.loginAdmin(email,pwd);
 		//deletedate값 불러오기
 		String loginDeletedate = dao.loginDeletedate(email,pwd);
 		

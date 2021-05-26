@@ -92,13 +92,12 @@
             
             <% //세션값이 없으면 회원가입 표시 아닐경우 로그인으로 표시됨. 
             Object email = session.getAttribute("email");
-            String admin = (String) session.getAttribute("admin");
-            int admminNum = Integer.parseInt(admin);
+            Object admin = session.getAttribute("admin");
             if(email == null) {%>
                 <li><a href="Signup.do" class="Guest">SignUp</a></li>
                 <li><a href="Login.do" class="Guest">login</a></li>
 			<% }else {%>
-				<%if(admminNum==1){%>
+				<%if(admin.equals(1)){%>
 				<li><a href="AdminUserlist.do" class="login">Userlist</a></li>
 				<%} %>
                 <li><a href="profile.do" class="login">MyPage</a></li>
