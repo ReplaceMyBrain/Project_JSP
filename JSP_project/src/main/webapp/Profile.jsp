@@ -73,7 +73,8 @@
 <body style="background-color:rgb(250,250,250);"> 
 	<div id = "container">
 		<div id ="profile">
-			${myprofile.userName } 
+			${myprofile.userName }
+			<a href="https://github.com/${myprofile.userGit }">${myprofile.userGit }</a> 
 			<a href = "editView.do" id = "edit">
 				&#9881;
 			</a>
@@ -90,7 +91,10 @@
 			<a href = "profileOnlyIdea.do">My Idea&Tip</a>
 			<a href = "ItemInfoView.do">Add Item</a>
 			<a href = "TipViewBoard.do">Add Tip</a>
-			<a href = "NoticeView.do">Add Notice</a><!-- 관리자만 띄우게 하기 -->
+			<%String admin = (String)session.getAttribute("admin");
+			int adminNum = Integer.parseInt(admin);
+			if(adminNum == 1){%>
+			<a href = "NoticeView.do">Add Notice</a><%}%>
 		</div>
 		
 		<div id="columns">

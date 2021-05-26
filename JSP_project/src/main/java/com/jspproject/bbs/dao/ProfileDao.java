@@ -36,9 +36,8 @@ public class ProfileDao {
 		try {
 			connection = dataSource.getConnection();
 			
-			String query = "SELECT EMAIL, NAME, GIT FROM USER WHERE EMAIL = ?";
+			String query = "SELECT EMAIL, NAME, GIT FROM USER WHERE EMAIL = " + userId;
 			preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setString(1, userId);
 			resultset = preparedStatement.executeQuery();
 			
 			if(resultset.next()) {
