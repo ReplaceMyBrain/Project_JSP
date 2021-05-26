@@ -5,7 +5,6 @@
 <!-- 이거쓰는거 잊지마 라이브러리 실행 안된다.. -->
 <!DOCTYPE html>
 <html>
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
 	$(document).ready(function() {
 	    alert('게시물 입력 완료했습니다.');
@@ -23,8 +22,8 @@
 	function deleteContent() {
 		var retVal = confirm("게시물 삭제하시겠습니까?");
 		if (retVal == true) {
-			var t_num = document.getElementById("deletecontent").value;
-			var url = "ContentViewTipdelete.do?t_num=" + t_num;
+			var n_num = document.getElementById("deletecontent").value;
+			var url = "ContentViewNoticedelete.do?n_num=" + n_num;
 			open(url,"deleteContent","roolbar=no, location=no,menubar=no,scrollbars=no,resizable=no,width=450,height=230");
 		} else {
 			return false;
@@ -53,8 +52,7 @@
 
 		var modifyContent = document.getElementById("modifyContent");
 		var deletecontent = document.getElementById("deletecontent");
-		var template = '${content_view.user_email}';
-		if (myEmail != template || myEmail == 'null') {
+		if (Admin == "0" || myEmail == 'null') {
 			modifyContent.style.display = "none";
 			deletecontent.style.display = "none";
 		}
@@ -70,32 +68,32 @@
 	/* 댓글 */
 	function writeComment() {
 		var form = document.commentWrite;
-		if (form.tc_content.value == "") {
+		if (form.nc_content.value == "") {
 			alert("comment를 입력하세요!");
-			form.tc_content.focus();
+			form.nc_content.focus();
 			return false;
 		}
 		
 		var retVal = confirm("댓글 입력하시겠습니까?");
-		var t_num = document.getElementById("t_num").value;
-		var tc_content = document.getElementById("commenttext").value;
+		var n_num = document.getElementById("n_num").value;
+		var nc_content = document.getElementById("commenttext").value;
 		if (retVal == true) {
-			var url = "TipCommentWrite.do?tc_content=" + tc_content + "&t_num=" + t_num;
+			var url = "NoticeCommentWrite.do?nc_content=" + nc_content + "&n_num=" + n_num;
 			open(url,"writeComment","roolbar=no, location=no,menubar=no,scrollbars=no,resizable=no,width=450,height=230");
 		} else {
 			return false;
 		}
 	}
 	/* 댓글 수정 */
-	function modifyComment(tc_num) {
-		var url = "TipCommentContent.do?tc_num=" + tc_num;
+	function modifyComment(nc_num) {
+		var url = "NoticeCommentContent.do?nc_num=" + nc_num;
 		open(url,"ModifyComment","roolbar=no, location=no,menubar=no,scrollbars=no,resizable=no,width=450,height=230");
 	}
 	/* 댓글 삭제 */
-	function deleteComment(tc_num) {
+	function deleteComment(nc_num) {
 		var retVal = confirm("댓글 삭제하시겠습니까?");
 		if (retVal == true) {
-			var url = "TipCommentDelete.do?tc_num=" + tc_num;
+			var url = "NoticeCommentDelete.do?nc_num=" + nc_num;
 			open(url,"deleteComment","roolbar=no, location=no,menubar=no,scrollbars=no,resizable=no,width=450,height=230");
 		} else {
 			return false;
@@ -155,24 +153,23 @@ div {
 		<br /> <br />
 		<form action="modify.do" method="post">
 			<h3 class="m-2">
-				<b>${content_view.t_title}</b>
+				<b>${content_view.n_title}</b>
 			</h3>
 			<br />
 
 			<h6 class="m-2">
 				By <a href="content_view.do?user_email=${content_view.user_email }">${content_view.name }</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				Date <i>${content_view.tw_regist}</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				Views <i>${content_view.t_hits}</i>
+				Date <i>${content_view.nw_regist}</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				Views <i>${content_view.n_hits}</i>
 			</h6>
 			<div>
 				<input type="submit" value="수정" id="modifyContent" class="btn btn-primary pull-right">&nbsp;&nbsp;&nbsp;
 				<a href="list.do" class="btn btn-primary pull-right">목록</a>&nbsp;&nbsp;&nbsp;
-				<button type="button" onclick="deleteContent()" id="deletecontent" value="${content_view.t_num}" class="btn btn-primary pull-right">삭제</button>
+				<button type="button" onclick="deleteContent()" id="deletecontent" value="${content_view.n_num}" class="btn btn-primary pull-right">삭제</button>
 			</div>
 			<hr />
 			<div class="form-group">
-				<div class="m-2"><img width="300" src="${content_view.t_image}" /></div>
-				<div class="m-2">${content_view.t_content}</div>
+				<div class="m-2">${content_view.n_content}</div>
 			</div>
 		</form>
 		<hr />
@@ -188,8 +185,8 @@ div {
 						<div class="panel-body">
 							<!-- 댓글입력 -->
 							<form name="commentWrite">
-								<input type="hidden" name="t_num" id="t_num" value="${content_view.t_num}">
-								<input type="text" name="tc_content" id="commenttext" class="form-control" placeholder="write a comment...">
+								<input type="hidden" name="n_num" id="n_num" value="${content_view.n_num}">
+								<input type="text" name="nc_content" id="commenttext" class="form-control" placeholder="write a comment...">
 								<br>
 								<input type="button" onclick="writeComment()" id="writecomment" value="댓글입력" class="btn btn-primary pull-right">
 							</form>
@@ -208,21 +205,21 @@ div {
 										<tr>
 											<td hidden="">${comment.user_email}</td>
 											<td>${comment.name}</td>
-											<td>${comment.tc_content}</td>
-											<td>${comment.tc_regist}</td>
+											<td>${comment.nc_content}</td>
+											<td>${comment.nc_regist}</td>
 											<td>
-												<button type="button" onclick="modifyComment(this.id);" name="modifycomment" id="${comment.tc_num}"
-													value="${comment.tc_num}" class="btn btn-primary pull-right">수정하기</button>
+												<button type="button" onclick="modifyComment(this.id);" name="modifycomment" id="${comment.nc_num}"
+													value="${comment.nc_num}" class="btn btn-primary pull-right">수정하기</button>
 												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												<button type="button" onclick="deleteComment(this.id);" name="deletecomment" id="${comment.tc_num}"
-													value="${comment.tc_num}" class="btn btn-primary pull-right">삭제하기</button>
+												<button type="button" onclick="deleteComment(this.id);" name="deletecomment" id="${comment.nc_num}"
+													value="${comment.nc_num}" class="btn btn-primary pull-right">삭제하기</button>
 											</td>
 										</tr>
 									</c:forEach>
 									<tr>
 										<td colspan="4" align="center">
 											<c:forEach items="${pageList }" var="page">
-												<a href="ContentViewItem.do?t_num=${content_view.t_num}&page=${page }">${page }</a>
+												<a href="ContentViewItem.do?n_num=${content_view.n_num}&page=${page }">${page }</a>
 											</c:forEach></td>
 									</tr>
 								</table>
