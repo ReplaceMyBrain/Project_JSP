@@ -23,7 +23,7 @@ public class TipDao {
 	}
 	
 	//tip 작성
-	public void write(String T_TITLE, String T_CONTENT, String T_IMAGE, String T_CATEGORY, String myEmail) {
+	public int write(String T_TITLE, String T_CONTENT, String T_IMAGE, String T_CATEGORY, String myEmail) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultset = null;
@@ -67,6 +67,7 @@ public class TipDao {
 				e.printStackTrace();
 			}
 		}
+		return t_num;
 }
 
 	//tip 불러오기

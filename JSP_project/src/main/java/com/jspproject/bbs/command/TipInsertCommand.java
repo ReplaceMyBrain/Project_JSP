@@ -51,7 +51,8 @@ public class TipInsertCommand implements Command {
 			String originalFile = multipartRequest1.getOriginalFileName("T_IMAGE");
 			TipDao tipDao = new TipDao();
 			T_IMAGE = "save_t/" + originalFile;
-			tipDao.write(T_TITLE, T_CONTENT, T_IMAGE, T_CATEGORY, myEmail);
+			int t_num = tipDao.write(T_TITLE, T_CONTENT, T_IMAGE, T_CATEGORY, myEmail);
+			request.setAttribute("result", t_num);
 			
 		} catch (IOException e1) {
 			e1.printStackTrace();
