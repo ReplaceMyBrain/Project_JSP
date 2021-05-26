@@ -14,6 +14,7 @@ import com.jspproject.bbs.command.AdminUserDeleteCommand;
 import com.jspproject.bbs.command.AdminUserRecoverCommand;
 import com.jspproject.bbs.command.AdminUserlistCommand;
 import com.jspproject.bbs.command.AdminuserSearchCommand;
+import com.jspproject.bbs.command.ChangePasswordCommand;
 import com.jspproject.bbs.command.Command;
 import com.jspproject.bbs.command.CommentContentCommand;
 import com.jspproject.bbs.command.CommentDeleteCommand;
@@ -25,16 +26,29 @@ import com.jspproject.bbs.command.ContentNoticeCommand;
 import com.jspproject.bbs.command.ContentNoticeDeleteCommand;
 import com.jspproject.bbs.command.ContentTipCommand;
 import com.jspproject.bbs.command.ContentTipDeleteCommand;
+import com.jspproject.bbs.command.DeleteAccountCommand;
 import com.jspproject.bbs.command.DonateCommand;
 import com.jspproject.bbs.command.DonateSumCommand;
+import com.jspproject.bbs.command.EditProfileCommand;
 import com.jspproject.bbs.command.ItemInfoContentCommand;
 import com.jspproject.bbs.command.ItemInfoInsertCommand;
 import com.jspproject.bbs.command.ItemInfoUpdateCommand;
+import com.jspproject.bbs.command.LoadAccItemCommand;
+import com.jspproject.bbs.command.LoadCodeTipCommand;
+import com.jspproject.bbs.command.LoadComItemCommand;
+import com.jspproject.bbs.command.LoadDeskItemCommand;
+import com.jspproject.bbs.command.LoadInfoTipCommand;
 import com.jspproject.bbs.command.LoadItemsCommand;
 import com.jspproject.bbs.command.LoadMyAllCommand;
 import com.jspproject.bbs.command.LoadMyItemCommand;
 import com.jspproject.bbs.command.LoadMyTipCommand;
 import com.jspproject.bbs.command.LoadNoticeCommand;
+import com.jspproject.bbs.command.LoadOtherItemCommand;
+import com.jspproject.bbs.command.LoadOtherTipCommand;
+import com.jspproject.bbs.command.LoadProtoTipCommand;
+import com.jspproject.bbs.command.LoadUserInfo;
+import com.jspproject.bbs.command.LoadUsersItem;
+import com.jspproject.bbs.command.LoadUsersTip;
 import com.jspproject.bbs.command.NoticeCommentContentCommand;
 import com.jspproject.bbs.command.NoticeCommentDeleteCommand;
 import com.jspproject.bbs.command.NoticeCommentModifyCommand;
@@ -466,18 +480,18 @@ public class MainController extends HttpServlet {
 			case("/edit.do"):
 				command = new EditProfileCommand();
 				command.execute(request, response, session);
-				viewPage = "profile.do";
+				viewPage = "EditProfileSuccess.jsp";
 				break;
 			
 			case("/changePassword.do"):
 				command = new ChangePasswordCommand();
 				command.execute(request, response, session);
-				viewPage = "profile.do";
+				viewPage = "EditProfileSuccess.jsp";
 				
 			case("/deleteAccount.do"):
 				command = new DeleteAccountCommand();
 				command.execute(request, response, session);
-				viewPage = "profile.do";
+				viewPage = "LoginNowWithdraw.jsp";
 			
 			//-------------------------------------도영
 
