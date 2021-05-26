@@ -65,13 +65,12 @@ public class ItemInfoUpdateCommand implements Command {
 			}
 			
 			itemInfoDao.update(I_NUM, I_TITLE, I_CONTENT, I_IMAGE, I_CATEGORY);
+			int i_num = Integer.parseInt(I_NUM);
+			request.setAttribute("result", i_num);
 			
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		} 
-
-
-
 
 	}
 

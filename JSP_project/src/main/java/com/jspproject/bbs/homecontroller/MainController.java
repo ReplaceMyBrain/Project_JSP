@@ -46,7 +46,6 @@ import com.jspproject.bbs.command.LoadNoticeCommand;
 import com.jspproject.bbs.command.LoadOtherItemCommand;
 import com.jspproject.bbs.command.LoadOtherTipCommand;
 import com.jspproject.bbs.command.LoadProtoTipCommand;
-import com.jspproject.bbs.command.LoadTipsCommand;
 import com.jspproject.bbs.command.LoadUserInfo;
 import com.jspproject.bbs.command.LoadUsersItem;
 import com.jspproject.bbs.command.LoadUsersTip;
@@ -481,18 +480,18 @@ public class MainController extends HttpServlet {
 			case("/edit.do"):
 				command = new EditProfileCommand();
 				command.execute(request, response, session);
-				viewPage = "profile.do";
+				viewPage = "EditProfileSuccess.jsp";
 				break;
 			
 			case("/changePassword.do"):
 				command = new ChangePasswordCommand();
 				command.execute(request, response, session);
-				viewPage = "profile.do";
+				viewPage = "EditProfileSuccess.jsp";
 				
 			case("/deleteAccount.do"):
 				command = new DeleteAccountCommand();
 				command.execute(request, response, session);
-				viewPage = "profile.do";
+				viewPage = "LoginNowWithdraw.jsp";
 			
 			//-------------------------------------도영
 
@@ -507,23 +506,38 @@ public class MainController extends HttpServlet {
 		case("/TipInsertBoard.do"): 
 			command = new TipInsertCommand();
 			command.execute(request, response, session);	
-			viewPage = "TipView.jsp";
+			int t_num = (int) request.getAttribute("result");
+			if(t_num != 0) {
+				viewPage = "ContentViewTips.do?t_num=" + t_num;
+			}else {
+				return;
+			}
 			break;
 			
-			//Item 글 불러오기
+		case ("/ContentViewTips.do"): // 실행시 ~~.do사용
+			command = new ContentItemCommand(); // 커맨드(메소드)적기
+			command.execute(request, response, session);
+			viewPage = "TipResultView.jsp"; // 실행할 jsp파일
+			break;
+			
+			//Tip 글 불러오기
 		case("/TipContentBoard.do"): 
 			command = new TipContentCommand();
 			command.execute(request, response, session);	
 			viewPage = "TipUpdateBoard.jsp";
 		break;
 
-			
 			//Tip 글 수정하기
 		case("/TipUpdateBoard.do"): 
 			command = new TipUpdateCommand();
 			command.execute(request, response, session);	
-			viewPage = "TipUpdateBoard.jsp";
-		break;
+			int t_num1 = (int) request.getAttribute("result");
+			if(t_num1 != 0) {
+				viewPage = "ContentViewTips.do?t_num=" + t_num1;
+			}else {
+				return;
+			}
+			break;
 		
 		//Item 작성 및 수정
 	
@@ -535,8 +549,19 @@ public class MainController extends HttpServlet {
 			//Item 글 작성하기
 		case("/ItemInfoInsert.do"): 
 			command = new ItemInfoInsertCommand();
-			command.execute(request, response, session);	
-			viewPage = "ItemInfoView.jsp"; //내가 작성한 글 번호 가져와서 상세 페이지로 갔으면 좋겠음.
+			command.execute(request, response, session);
+			int i_num = (int) request.getAttribute("result");
+			if(i_num != 0) {
+				viewPage = "ContentViewItems.do?i_num=" + i_num;
+			}else {
+				return;
+			}
+			break;
+			
+		case ("/ContentViewItems.do"): // 실행시 ~~.do사용
+			command = new ContentItemCommand(); // 커맨드(메소드)적기
+			command.execute(request, response, session);
+			viewPage = "ItemInfoResultView.jsp"; // 실행할 jsp파일
 			break;
 			
 			//Item 글 불러오기
@@ -550,7 +575,12 @@ public class MainController extends HttpServlet {
 		case("/ItemInfoUpdate.do"): 
 			command = new ItemInfoUpdateCommand();
 			command.execute(request, response, session);	
-			viewPage = "ItemInfoUpdate.jsp"; // 글 수정할 때, 번호를 받아서 정보를 받고 상세페이지로 갔으면 좋겠음.
+			int i_num1 = (int) request.getAttribute("result");
+			if(i_num1 != 0) {
+				viewPage = "ContentViewItems.do?i_num=" + i_num1;
+			}else {
+				return;
+			}
 		break;
 		
 		
@@ -565,8 +595,19 @@ public class MainController extends HttpServlet {
 		case("/NoticeInsert.do"): 
 			command = new NoticeInsertCommand();
 			command.execute(request, response, session);	
-			viewPage = "NoticeView.jsp";
-		break;
+			int n_num = (int) request.getAttribute("result");
+			if(n_num != 0) {
+				viewPage = "ContentViewNotices.do?n_num=" + n_num;
+			}else {
+				return;
+			}
+			break;
+			
+		case ("/ContentViewNotices.do"): // 실행시 ~~.do사용
+			command = new ContentItemCommand(); // 커맨드(메소드)적기
+			command.execute(request, response, session);
+			viewPage = "NoticeResultView.jsp"; // 실행할 jsp파일
+			break;
 		
 		//notice 글 불러오기
 		case("/NoticeContent.do"): 
@@ -579,8 +620,14 @@ public class MainController extends HttpServlet {
 		case("/NoticeUpdate.do"): 
 			command = new NoticeUpdateCommand();
 			command.execute(request, response, session);	
-			viewPage = "NoticeUpdate.jsp";
-		break;
+			command.execute(request, response, session);	
+			int n_num1 = (int) request.getAttribute("result");
+			if(n_num1 != 0) {
+				viewPage = "ContentViewNotices.do?n_num=" + n_num1;
+			}else {
+				return;
+			}
+			break;
 
 
 		//도영 커맨드 추가;
