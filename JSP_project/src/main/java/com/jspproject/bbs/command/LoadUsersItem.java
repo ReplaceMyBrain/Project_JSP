@@ -45,7 +45,7 @@ public class LoadUsersItem implements Command {
 		
 		request.setAttribute("myprofile", dto);
 		request.setAttribute("count", Integer.toString(countedTuple));
-		session.setAttribute("do", "profileOnlyTool.do");
+		session.setAttribute("do", "profileOnlyItem.do");
 	}
 	
 	public ArrayList<Integer> calcNumOfPage(int countedTuple) {

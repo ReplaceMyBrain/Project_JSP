@@ -14,6 +14,7 @@ import com.jspproject.bbs.command.AdminUserDeleteCommand;
 import com.jspproject.bbs.command.AdminUserRecoverCommand;
 import com.jspproject.bbs.command.AdminUserlistCommand;
 import com.jspproject.bbs.command.AdminuserSearchCommand;
+import com.jspproject.bbs.command.ChangePasswordCommand;
 import com.jspproject.bbs.command.Command;
 import com.jspproject.bbs.command.CommentContentCommand;
 import com.jspproject.bbs.command.CommentDeleteCommand;
@@ -25,22 +26,44 @@ import com.jspproject.bbs.command.ContentNoticeCommand;
 import com.jspproject.bbs.command.ContentNoticeDeleteCommand;
 import com.jspproject.bbs.command.ContentTipCommand;
 import com.jspproject.bbs.command.ContentTipDeleteCommand;
+import com.jspproject.bbs.command.DeleteAccountCommand;
 import com.jspproject.bbs.command.DonateCommand;
 import com.jspproject.bbs.command.DonateSumCommand;
+import com.jspproject.bbs.command.EditProfileCommand;
+import com.jspproject.bbs.command.ItemInfoContentCommand;
+import com.jspproject.bbs.command.ItemInfoInsertCommand;
+import com.jspproject.bbs.command.ItemInfoUpdateCommand;
+import com.jspproject.bbs.command.LoadAccItemCommand;
+import com.jspproject.bbs.command.LoadCodeTipCommand;
+import com.jspproject.bbs.command.LoadComItemCommand;
+import com.jspproject.bbs.command.LoadDeskItemCommand;
+import com.jspproject.bbs.command.LoadInfoTipCommand;
 import com.jspproject.bbs.command.LoadItemsCommand;
 import com.jspproject.bbs.command.LoadMyAllCommand;
 import com.jspproject.bbs.command.LoadMyItemCommand;
 import com.jspproject.bbs.command.LoadMyTipCommand;
 import com.jspproject.bbs.command.LoadNoticeCommand;
+import com.jspproject.bbs.command.LoadOtherItemCommand;
+import com.jspproject.bbs.command.LoadOtherTipCommand;
+import com.jspproject.bbs.command.LoadProtoTipCommand;
+import com.jspproject.bbs.command.LoadTipsCommand;
+import com.jspproject.bbs.command.LoadUserInfo;
+import com.jspproject.bbs.command.LoadUsersItem;
 import com.jspproject.bbs.command.NoticeCommentContentCommand;
 import com.jspproject.bbs.command.NoticeCommentDeleteCommand;
 import com.jspproject.bbs.command.NoticeCommentModifyCommand;
 import com.jspproject.bbs.command.NoticeCommentWriteCommand;
+import com.jspproject.bbs.command.NoticeContentCommand;
+import com.jspproject.bbs.command.NoticeInsertCommand;
+import com.jspproject.bbs.command.NoticeUpdateCommand;
 import com.jspproject.bbs.command.SearchingCommand;
 import com.jspproject.bbs.command.TipCommentContentCommand;
 import com.jspproject.bbs.command.TipCommentDeleteCommand;
 import com.jspproject.bbs.command.TipCommentModifyCommand;
 import com.jspproject.bbs.command.TipCommentWriteCommand;
+import com.jspproject.bbs.command.TipContentCommand;
+import com.jspproject.bbs.command.TipInsertCommand;
+import com.jspproject.bbs.command.TipUpdateCommand;
 import com.jspproject.bbs.command.UserEmailSearchCommand;
 import com.jspproject.bbs.command.UserLoginCommand;
 import com.jspproject.bbs.command.UserPwdSearchCommand;
@@ -135,7 +158,6 @@ public class MainController extends HttpServlet {
 		
 		//메인으로
 		case("/Main.do"): // 실행시 ~~.do사용
-			session.setAttribute("postsCount", 1);
 			viewPage = "Main.jsp";
 		break;
 		
@@ -393,10 +415,13 @@ public class MainController extends HttpServlet {
 				command.execute(request, response, session);
 				viewPage = "AdminUserList.jsp";
 				break;
+
 				//-----------------------------------------도영
+
 			
 			//아이템목록
 			case("/list.do"):
+				session.setAttribute("postsCount", 1);
 				command = new LoadItemsCommand();
 				command.execute(request, response, session);
 				viewPage = "ListItem.jsp";
@@ -404,6 +429,7 @@ public class MainController extends HttpServlet {
 			
 			//팁목록	
 			case("/list2.do"):
+				session.setAttribute("postsCount", 1);
 				command = new LoadMyTipCommand();
 				command.execute(request, response, session);
 				viewPage = "ListTIp.jsp";
@@ -411,6 +437,7 @@ public class MainController extends HttpServlet {
 				
 			//공지사항목록	
 			case("/list3.do"):
+				session.setAttribute("postsCount", 1);
 				command = new LoadNoticeCommand();
 				command.execute(request, response, session);
 				viewPage = "ListNotice.jsp";
@@ -450,13 +477,191 @@ public class MainController extends HttpServlet {
 				viewPage = "EditProfile.jsp";
 				break;
 				
-//			case("/edit.do"):
-//				command = new EditProfileCommand();
-//				command.execute(request, response, session);
-//				viewPage = "profile.do";
-//				break;
+			case("/edit.do"):
+				command = new EditProfileCommand();
+				command.execute(request, response, session);
+				viewPage = "profile.do";
+				break;
 			
-				//-------------------------------------도영
+			case("/changePassword.do"):
+				command = new ChangePasswordCommand();
+				command.execute(request, response, session);
+				viewPage = "profile.do";
+				
+			case("/deleteAccount.do"):
+				command = new DeleteAccountCommand();
+				command.execute(request, response, session);
+				viewPage = "profile.do";
+			
+			//-------------------------------------도영
+
+			//Tip 작성 및 수정
+		
+		//Tip 글 폼
+		case("/TipViewBoard.do"): 	
+		viewPage = "TipView.jsp";
+		break;
+
+			//Tip 글 작성하기
+		case("/TipInsertBoard.do"): 
+			command = new TipInsertCommand();
+			command.execute(request, response, session);	
+			viewPage = "TipView.jsp";
+			break;
+			
+			//Item 글 불러오기
+		case("/TipContentBoard.do"): 
+			command = new TipContentCommand();
+			command.execute(request, response, session);	
+			viewPage = "TipUpdateBoard.jsp";
+		break;
+
+			
+			//Tip 글 수정하기
+		case("/TipUpdateBoard.do"): 
+			command = new TipUpdateCommand();
+			command.execute(request, response, session);	
+			viewPage = "TipUpdateBoard.jsp";
+		break;
+		
+		//Item 작성 및 수정
+	
+			//Item 글 폼
+		case("/ItemInfoView.do"): 	
+			viewPage = "ItemInfoView.jsp"; 
+			break;
+			
+			//Item 글 작성하기
+		case("/ItemInfoInsert.do"): 
+			command = new ItemInfoInsertCommand();
+			command.execute(request, response, session);	
+			viewPage = "ItemInfoView.jsp"; //내가 작성한 글 번호 가져와서 상세 페이지로 갔으면 좋겠음.
+			break;
+			
+			//Item 글 불러오기
+		case("/ItemInfoContent.do"): 
+			command = new ItemInfoContentCommand();
+			command.execute(request, response, session);	
+			viewPage = "ItemInfoUpdate.jsp";
+		break;
+		
+			//Item 글 수정하기
+		case("/ItemInfoUpdate.do"): 
+			command = new ItemInfoUpdateCommand();
+			command.execute(request, response, session);	
+			viewPage = "ItemInfoUpdate.jsp"; // 글 수정할 때, 번호를 받아서 정보를 받고 상세페이지로 갔으면 좋겠음.
+		break;
+		
+		
+		//notice 작성 및 수정
+		
+		//notice 글 폼
+		case("/NoticeView.do"): 	
+			viewPage = "NoticeView.jsp";
+		break;
+		
+		//notice 글 작성하기
+		case("/NoticeInsert.do"): 
+			command = new NoticeInsertCommand();
+			command.execute(request, response, session);	
+			viewPage = "NoticeView.jsp";
+		break;
+		
+		//notice 글 불러오기
+		case("/NoticeContent.do"): 
+			command = new NoticeContentCommand();
+			command.execute(request, response, session);	
+			viewPage = "NoticeUpdate.jsp";
+		break;
+		
+		//notice 글 수정하기
+		case("/NoticeUpdate.do"): 
+			command = new NoticeUpdateCommand();
+			command.execute(request, response, session);	
+			viewPage = "NoticeUpdate.jsp";
+		break;
+
+
+		//도영 커맨드 추가;
+		// 상대회원 정보 보기
+		case("/userProfile.do"):
+			command = new LoadUserInfo();
+			command.execute(request, response, session);
+			viewPage = "UserPage.jsp";
+		break;
+
+		case("/profileOnlyItem.do"):
+			command = new LoadUsersItem();
+			command.execute(request, response, session);
+			viewPage = "UserPage.jsp";
+		break;
+		
+		case("/profileOnlyTip.do"):
+			command = new LoadTipsCommand();
+			command.execute(request, response, session);
+			viewPage = "UserPage.jsp";
+		break;
+		
+		// 카테고리로 보기
+		
+		//아이템목록
+		case("/ComItem.do"):
+			session.setAttribute("postsCount", 1);
+			command = new LoadComItemCommand();
+			command.execute(request, response, session);
+			viewPage = "ListItem.jsp";
+		break;
+		
+		case("/AccItem.do"):
+			session.setAttribute("postsCount", 1);
+			command = new LoadAccItemCommand();
+			command.execute(request, response, session);
+			viewPage = "ListItem.jsp";
+		break;
+		
+		case("/DeskItem.do"):
+			session.setAttribute("postsCount", 1);
+			command = new LoadDeskItemCommand();
+			command.execute(request, response, session);
+			viewPage = "ListItem.jsp";
+		break;
+		
+		case("/OtherItem.do"):
+			session.setAttribute("postsCount", 1);
+			command = new LoadOtherItemCommand();
+			command.execute(request, response, session);
+			viewPage = "ListItem.jsp";
+		break;
+		
+		case("/CodeTip.do"):
+			session.setAttribute("postsCount", 1);
+			command = new LoadCodeTipCommand();
+			command.execute(request, response, session);
+			viewPage = "ListTIp.jsp";
+		break;
+		
+		case("/ProtoTip.do"):
+			session.setAttribute("postsCount", 1);
+			command = new LoadProtoTipCommand();
+			command.execute(request, response, session);
+			viewPage = "ListTIp.jsp";
+			break;
+		
+		case("/InfoTip.do"):
+			session.setAttribute("postsCount", 1);
+			command = new LoadInfoTipCommand();
+			command.execute(request, response, session);
+			viewPage = "ListTIp.jsp";
+			break;
+			
+		case("/OtherTip.do"):
+			session.setAttribute("postsCount", 1);
+			command = new LoadOtherTipCommand();
+			command.execute(request, response, session);
+			viewPage = "ListTIp.jsp";
+			break;
+		
+		
 		}		
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);

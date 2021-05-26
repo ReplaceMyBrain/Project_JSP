@@ -72,4 +72,31 @@ public class ViewsDao {
 		}
 		
 	}
+	
+	public void countingNoticeView(int num) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			String query = "update NOTICE set n_hits = n_hits + 1 where n_num = ?";
+			preparedStatement = connection.prepareStatement(query);
+			
+			preparedStatement.setInt(1, num);
+			
+			preparedStatement.executeUpdate();
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			}catch(Exception e){
+				e.printStackTrace();
+				
+			}
+		}
+		
+	}
 }

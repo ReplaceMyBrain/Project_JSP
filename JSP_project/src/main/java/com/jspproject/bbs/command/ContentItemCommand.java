@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.jspproject.bbs.dao.ContentItemdao;
+import com.jspproject.bbs.dao.ViewsDao;
 import com.jspproject.bbs.dto.ContentItemdto;
 
 public class ContentItemCommand implements Command {
@@ -18,8 +19,14 @@ public class ContentItemCommand implements Command {
 		// TODO Auto-generated method stub
 		// DB에서 전체정보 읽어서 attribute로 jsp에 전달하기
 		// 사용자가 요청한 페이지 번호 초기값은 가장 최신글을 보여주는 1
+		ViewsDao viewDao = new ViewsDao();
 		int requestPage = 1;
+		
 		String i_num = request.getParameter("i_num");
+		
+		int number = Integer.parseInt(i_num);
+		viewDao.countingItemView(number);
+		
 		ContentItemdao dao = new ContentItemdao();
 
 		// 클릭된 게시물 상세페이지 보여주기

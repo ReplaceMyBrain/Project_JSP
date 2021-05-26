@@ -38,7 +38,7 @@ public class LoadUsersTip implements Command {
 
 		ArrayList<Integer> pageList = calcNumOfPage(countedTuple);
 		session.setAttribute("pageList", pageList);
-		session.setAttribute("do", "profileOnlyIdea.do");
+		session.setAttribute("do", "profileOnlyTip.do");
 		
 		ArrayList<PostDto> dtos = listDao.myTipList(currentUser, requestPage, countedTuple);
 		

@@ -41,7 +41,7 @@ public class LoadUserInfo implements Command {
 		request.setAttribute("myList", dtos);
 		request.setAttribute("myprofile", dto);
 		request.setAttribute("count", Integer.toString(countedTuple));
-		session.setAttribute("do", "profile.do");
+		session.setAttribute("do", "userProfile.do");
 	}
 	
 	public ArrayList<Integer> calcNumOfPage(int countedTuple) {
