@@ -148,7 +148,7 @@ div {
 	<!-- 상세페이지 -->
 	<div class="container">
 		<br /> <br />
-		<form action="modify.do" method="post">
+		<form action="TipContentBoard.do" method="post">
 			<h3 class="m-2">
 				<b>${content_view.t_title}</b>
 			</h3>
@@ -162,7 +162,7 @@ div {
 			</h6>
 			<div>
 				<input type="submit" value="수정" id="modifyContent" class="btn btn-primary pull-right">&nbsp;&nbsp;&nbsp;
-				<a href="list.do" class="btn btn-primary pull-right">목록</a>&nbsp;&nbsp;&nbsp;
+				<a href="list2.do" class="btn btn-primary pull-right">목록</a>&nbsp;&nbsp;&nbsp;
 				<button type="button" onclick="deleteContent()" id="deletecontent" value="${content_view.t_num}" class="btn btn-primary pull-right">삭제</button>
 			</div>
 			<hr />

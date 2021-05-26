@@ -73,7 +73,8 @@
 <body style="background-color:rgb(250,250,250);"> 
 	<div id = "container">
 		<div id ="profile">
-			${myprofile.userName } 
+			${myprofile.userName }
+			<a href="https://github.com/${myprofile.userGit }">${myprofile.userGit }</a> 
 			<a href = "editView.do" id = "edit">
 				&#9881;
 			</a>
@@ -103,6 +104,10 @@
 	
 		<div class="pagination">
 		<c:forEach items="${pageList }" var="page">
+			<%String admin = (String)session.getAttribute("admin");
+			int adminNum = Integer.parseInt(admin);
+			if(adminNum == 1){%>
+			<a href = "NoticeView.do">Add Notice</a><%}%>
 			<a href="<%session.getAttribute("do");%>?page=${page }">${page }</a>
 		</c:forEach>
 		</div>
