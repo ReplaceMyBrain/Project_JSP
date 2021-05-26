@@ -54,7 +54,8 @@ public class ItemInfoInsertCommand implements Command {
 			String originalFile = multipartRequest1.getOriginalFileName("I_IMAGE");
 			ItemInfoDao itemInfoDao = new ItemInfoDao();
 			I_IMAGE = "save/" + originalFile;
-			itemInfoDao.write(I_TITLE, I_CONTENT, I_IMAGE, I_CATEGORY, myEmail); //myEmail
+			int i_num = itemInfoDao.write(I_TITLE, I_CONTENT, I_IMAGE, I_CATEGORY, myEmail); //myEmail
+			request.setAttribute("result", i_num);
 			
 		} catch (IOException e1) {
 			e1.printStackTrace();

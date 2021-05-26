@@ -66,6 +66,8 @@ public class TipUpdateCommand implements Command {
 			}
 			
 			tipDao.update(T_NUM, T_TITLE, T_CONTENT, T_IMAGE, T_CATEGORY);
+			int t_num = Integer.parseInt(T_NUM);
+			request.setAttribute("result", t_num);
 			
 		} catch (IOException e1) {
 			e1.printStackTrace();

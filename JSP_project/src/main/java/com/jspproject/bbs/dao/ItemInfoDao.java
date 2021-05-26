@@ -24,7 +24,7 @@ public class ItemInfoDao {
 	}
 	
 	//item 작성
-	public void write(String I_TITLE, String I_CONTENT, String I_IMAGE, String I_CATEGORY, String myEmail) {
+	public int write(String I_TITLE, String I_CONTENT, String I_IMAGE, String I_CATEGORY, String myEmail) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultset = null;
@@ -63,8 +63,10 @@ public class ItemInfoDao {
 				e.printStackTrace();
 			}
 		}
+		
+		return i_num;
 	}
-
+ 
 	
 	//item 쓴 것 읽기
 	public ItemInfoDto read(String strI_NUM) {
