@@ -86,7 +86,7 @@
 		<hr id= "line" style="color:#zzxcvc">
 	</div>
 	<div class = "buttons">
-			<a href = "profile.do">All Posting</a>
+			
 			<a href = "profileOnlyTool.do">My Item</a>
 			<a href = "profileOnlyIdea.do">My Idea&Tip</a>
 			<a href = "ItemInfoView.do">Add Item</a>

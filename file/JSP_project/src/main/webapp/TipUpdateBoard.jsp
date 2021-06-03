@@ -104,12 +104,6 @@ table{
 					return false;
 				}
 				
-				else if(form.T_IMAGE.value==""){
-					alert("사진을 첨부해주세요!");
-					form.T_IMAGE.focus();
-					return false;
-				}
-				
 				else if(form.T_CONTENT.value==""){
 					alert("내용을 입력해주세요!");
 					form.T_CONTENT.focus();
@@ -197,6 +191,7 @@ table{
 		</div>
 	</div>
 
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 	<footer>
 		<%@include file="Footer.jsp"%>
 	</footer>

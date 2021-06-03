@@ -12,7 +12,7 @@ import com.jspproject.bbs.dto.NoticeDto;
 
 public class LoadNoticeCommand implements Command {
 
-	int numOfTuplesPerPage = 5;
+	int numOfTuplesPerPage = 15;
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		// TODO Auto-generated method stub

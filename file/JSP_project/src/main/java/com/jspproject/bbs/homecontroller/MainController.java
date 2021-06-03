@@ -457,9 +457,9 @@ public class MainController extends HttpServlet {
 				
 			//마이페이지 자기가 올린 게시물 보이게함
 			case("/profile.do"):
-				command = new LoadMyAllCommand();
+				command = new LoadMyItemCommand();
 				command.execute(request, response, session);
-				viewPage = "Profile.jsp";
+				viewPage = "ProfileWithItem.jsp";
 				break;
 				
 			//마이페이지에서 아이템게시물만 보이게	
@@ -616,9 +616,9 @@ public class MainController extends HttpServlet {
 		//도영 커맨드 추가;
 		// 상대회원 정보 보기
 		case("/userProfile.do"):
-			command = new LoadUserInfo();
+			command = new LoadUsersItem();
 			command.execute(request, response, session);
-			viewPage = "UserPage.jsp";
+			viewPage = "UserPageWithItem.jsp";
 		break;
 
 		case("/userOnlyItem.do"):

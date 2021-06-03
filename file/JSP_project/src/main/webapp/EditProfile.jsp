@@ -274,7 +274,7 @@ function pwdchangeSubmit(){
         </form>
 			<hr>
 			<form name="delete" action="deleteAccount.do" method="post">
-				<input type="submit" id="button_withdraw" value="계정삭제">
+				<input type="submit" name="pwdDelete" id="button_withdraw" value="계정삭제">
 			</form>
 		</div>
 	</body>

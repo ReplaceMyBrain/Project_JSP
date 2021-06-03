@@ -15,7 +15,7 @@ public class DeleteAccountCommand implements Command {
 			throws IOException {
 		// TODO Auto-generated method stub
 
-		String password = request.getParameter("password");
+		String password = request.getParameter("pwdDelete");
 		String email  = (String)session.getAttribute("email");
 		
 		EditProfileDao dao = new EditProfileDao();

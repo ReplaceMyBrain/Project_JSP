@@ -85,7 +85,7 @@ public class MyPostDao {
 		try {
 			connection = dataSource.getConnection();
 			
-			String query = "SELECT * FROM ITEM WHERE I_NUM IN (SELECT ITEM_I_NUM FROM WRITE_ITEM WHERE USER_EMAIL = "+ userId + ") LIMIT ?, ?";
+			String query = "SELECT * FROM ITEM WHERE i_num in (select item_i_num from write_item where iw_delete is null) and I_NUM IN (SELECT ITEM_I_NUM FROM WRITE_ITEM WHERE USER_EMAIL = "+ userId + ") LIMIT ?, ?";
 			
 			int offset = start - 1;
 			// order by date로
@@ -134,7 +134,7 @@ public class MyPostDao {
 		try {
 			connection = dataSource.getConnection();
 			
-			String query = "SELECT * FROM TIP WHERE T_NUM IN (SELECT TIP_T_NUM FROM WRITE_TIP WHERE USER_EMAIL = "+ userId +") LIMIT ?, ?";
+			String query = "SELECT * FROM TIP WHERE t_num in (select tip_t_num from write_tip where tw_delete is null) and T_NUM IN (SELECT TIP_T_NUM FROM WRITE_TIP WHERE USER_EMAIL = "+ userId +") LIMIT ?, ?";
 			
 			int offset = start - 1;
 			// order by date로
@@ -219,7 +219,7 @@ public class MyPostDao {
 		try {
 			connection = dataSource.getConnection();
 			
-			String query = "SELECT COUNT(*) FROM TIP WHERE T_NUM IN (SELECT TIP_T_NUM FROM WRITE_TIP WHERE USER_EMAIL = "+ userId + ")";
+			String query = "SELECT COUNT(*) FROM TIP WHERE t_num in (select tip_t_num from write_tip where tw_delete is null) and T_NUM IN (SELECT TIP_T_NUM FROM WRITE_TIP WHERE USER_EMAIL = "+ userId + ")";
 			preparedStatement = connection.prepareStatement(query);
 			
 			resultset = preparedStatement.executeQuery();
@@ -253,7 +253,7 @@ public class MyPostDao {
 		try {
 			connection = dataSource.getConnection();
 			
-			String query = "SELECT COUNT(*) FROM ITEM WHERE I_NUM IN (SELECT ITEM_I_NUM FROM WRITE_ITEM WHERE USER_EMAIL = "+ userId + ")";
+			String query = "SELECT COUNT(*) FROM ITEM WHERE i_num in (select item_i_num from write_item where iw_delete is null) and I_NUM IN (SELECT ITEM_I_NUM FROM WRITE_ITEM WHERE USER_EMAIL = "+ userId + ")";
 			preparedStatement = connection.prepareStatement(query);
 			
 			resultset = preparedStatement.executeQuery();

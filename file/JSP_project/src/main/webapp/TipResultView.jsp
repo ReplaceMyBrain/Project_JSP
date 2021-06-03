@@ -153,7 +153,7 @@ div {
 	<!-- 상세페이지 -->
 	<div class="container">
 		<br /> <br />
-		<form action="modify.do" method="post">
+		<form action="" method="post">
 			<h3 class="m-2">
 				<b>${content_view.t_title}</b>
 			</h3>
